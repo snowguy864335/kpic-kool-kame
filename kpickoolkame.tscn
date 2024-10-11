@@ -9,3 +9,5 @@
 
 [node name="Sniper" parent="." instance=ExtResource("2_c5q1d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223824, 0, 46.0109)
+
+[node name="Node3D" type="Node3D" parent="."]
