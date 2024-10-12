@@ -1,11 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqqoldqt53m6a"]
+[gd_scene load_steps=8 format=3 uid="uid://dqqoldqt53m6a"]
 
 [ext_resource type="PackedScene" uid="uid://vj815mnyo6vb" path="res://lodespearnotAKrillion.blend" id="1_y2eps"]
 [ext_resource type="PackedScene" uid="uid://d06uiutvshy2" path="res://Sniper.blend" id="2_c5q1d"]
+[ext_resource type="PackedScene" uid="uid://b8op40d0vk3g" path="res://playertest.tscn" id="3_vmy5r"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dg0fn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_86lip"]
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1hq7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cgatq"]
+
+[node name="game" type="Node3D"]
 
 [node name="lodespearnotAKrillion" parent="." instance=ExtResource("1_y2eps")]
 
 [node name="Sniper" parent="." instance=ExtResource("2_c5q1d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223824, 0, 46.0109)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62089, 0)
+light_energy = 5.0
+light_size = 10.0
+omni_range = 50.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_dg0fn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("PlaneMesh_86lip")
+
+[node name="playertest" parent="." instance=ExtResource("3_vmy5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22253, 0)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09273, 0.511179, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_u1hq7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_cgatq")
