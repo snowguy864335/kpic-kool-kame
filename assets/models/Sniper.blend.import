@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://vj815mnyo6vb"
-path="res://.godot/imported/lodespearnotAKrillion.blend-815cf355becaac746f01c00f9643e9ae.scn"
+uid="uid://d06uiutvshy2"
+path="res://.godot/imported/Sniper.blend-06e8923cdfb382d08a5fd5a409512e13.scn"
 
 [deps]
 
-source_file="res://lodespearnotAKrillion.blend"
-dest_files=["res://.godot/imported/lodespearnotAKrillion.blend-815cf355becaac746f01c00f9643e9ae.scn"]
+source_file="res://assets/models/Sniper.blend"
+dest_files=["res://.godot/imported/Sniper.blend-06e8923cdfb382d08a5fd5a409512e13.scn"]
 
 [params]
 

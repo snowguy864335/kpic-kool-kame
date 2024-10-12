@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bsf6tqnafbfac"
-path="res://.godot/imported/placeholderplayer.blend-1c62565975572516b7392c137f53858a.scn"
+uid="uid://vj815mnyo6vb"
+path="res://.godot/imported/lodespearnotAKrillion.blend-1047d84187cdfacb7469f606831571b0.scn"
 
 [deps]
 
-source_file="res://placeholderplayer.blend"
-dest_files=["res://.godot/imported/placeholderplayer.blend-1c62565975572516b7392c137f53858a.scn"]
+source_file="res://assets/models/lodespearnotAKrillion.blend"
+dest_files=["res://.godot/imported/lodespearnotAKrillion.blend-1047d84187cdfacb7469f606831571b0.scn"]
 
 [params]
 

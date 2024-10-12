@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d06uiutvshy2"
-path="res://.godot/imported/Sniper.blend-8e577be791a6178edbea37c9124c3c77.scn"
+uid="uid://bsf6tqnafbfac"
+path="res://.godot/imported/placeholderplayer.blend-f46eab891ded729531c2d73db4b90c6c.scn"
 
 [deps]
 
-source_file="res://Sniper.blend"
-dest_files=["res://.godot/imported/Sniper.blend-8e577be791a6178edbea37c9124c3c77.scn"]
+source_file="res://assets/models/placeholderplayer.blend"
+dest_files=["res://.godot/imported/placeholderplayer.blend-f46eab891ded729531c2d73db4b90c6c.scn"]
 
 [params]
 
