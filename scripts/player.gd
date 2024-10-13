@@ -1,6 +1,7 @@
 extends CharacterBody3D
+class_name Player
 
-@onready var camera := $Camera3D
+@onready var camera : Camera3D = $Camera3D
 @onready var ui := %UI
 
 @export_category("Controller")

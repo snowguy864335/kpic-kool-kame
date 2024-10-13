@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_t58hx"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
-[ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/player.tscn" id="3_pcgrj"]
 [ext_resource type="PackedScene" uid="uid://cyqp2jrqmh7qv" path="res://scenes/UI.tscn" id="4_uqsrh"]
+[ext_resource type="PackedScene" uid="uid://b006twuoxosnj" path="res://scenes/shooty_player.tscn" id="5_fvnoa"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="5_tncmb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
@@ -67,8 +67,6 @@ mesh = SubResource("BoxMesh_1xbwg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("BoxShape3D_lgvwk")
 
-[node name="Player" parent="." instance=ExtResource("3_pcgrj")]
-
 [node name="UI" parent="." instance=ExtResource("4_uqsrh")]
 unique_name_in_owner = true
 mouse_filter = 2
@@ -86,5 +84,7 @@ mesh = SubResource("PrismMesh_6002w")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, -0.5, 0.5)
 shape = SubResource("ConvexPolygonShape3D_6uje0")
+
+[node name="ShootyPlayer" parent="." instance=ExtResource("5_fvnoa")]
 
 [editable path="UI"]
