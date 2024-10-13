@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdq7xwyi47iam"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://cg0laar24bdm6"
+path="res://.godot/imported/Crosshair-PNG-Image-1210779893.png-476fe23e2c58b07f652cc5aa6e65f251.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://assets/Crosshair-PNG-Image-1210779893.png"
+dest_files=["res://.godot/imported/Crosshair-PNG-Image-1210779893.png-476fe23e2c58b07f652cc5aa6e65f251.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
