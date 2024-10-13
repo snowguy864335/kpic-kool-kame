@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw68nrdep31id"]
+[gd_scene load_steps=12 format=3 uid="uid://cw68nrdep31id"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_t58hx"]
-[ext_resource type="Script" path="res://scripts/character_body_3d.gd" id="2_ck2oj"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
+[ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/player.tscn" id="3_pcgrj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,15 +22,12 @@ glow_enabled = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_5orgr"]
 size = Vector2(20, 20)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ff53q"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_jy4u6"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fqa80"]
 render_priority = 0
 shader = ExtResource("3_aj2na")
 
 [sub_resource type="BoxMesh" id="BoxMesh_1xbwg"]
+lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("ShaderMaterial_fqa80")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgvwk"]
@@ -53,19 +50,6 @@ shape = SubResource("WorldBoundaryShape3D_v3f8u")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_5orgr")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19371, 0)
-script = ExtResource("2_ck2oj")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_ff53q")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_jy4u6")
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.672289, -0.154627)
-
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6)
 
@@ -74,3 +58,5 @@ mesh = SubResource("BoxMesh_1xbwg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("BoxShape3D_lgvwk")
+
+[node name="Player" parent="." instance=ExtResource("3_pcgrj")]
