@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cw68nrdep31id"]
+[gd_scene load_steps=21 format=3 uid="uid://cw68nrdep31id"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_t58hx"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
-[ext_resource type="PackedScene" uid="uid://cyqp2jrqmh7qv" path="res://scenes/UI.tscn" id="4_uqsrh"]
-[ext_resource type="PackedScene" uid="uid://b006twuoxosnj" path="res://scenes/shooty_player.tscn" id="5_fvnoa"]
+[ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="4_uqsrh"]
+[ext_resource type="PackedScene" uid="uid://efmlyd2vxg8n" path="res://scenes/shooty_player.tscn" id="5_fvnoa"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="5_tncmb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
@@ -39,6 +39,16 @@ left_to_right = 0.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6uje0"]
 points = PackedVector3Array(0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylie7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nsx1"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yalww"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ribx2"]
+
+[sub_resource type="Skin" id="Skin_gcepq"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_t58hx")
@@ -86,5 +96,14 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, -
 shape = SubResource("ConvexPolygonShape3D_6uje0")
 
 [node name="ShootyPlayer" parent="." instance=ExtResource("5_fvnoa")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.81532, 9.33935, 3.19115)
+material_override = SubResource("StandardMaterial3D_ylie7")
+material_overlay = SubResource("StandardMaterial3D_1nsx1")
+transparency = 0.9
+process_material = SubResource("ParticleProcessMaterial_yalww")
+draw_pass_1 = SubResource("BoxMesh_ribx2")
+draw_skin = SubResource("Skin_gcepq")
 
 [editable path="UI"]
