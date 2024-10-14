@@ -1,9 +1,7 @@
 extends CharacterBody3D
 class_name Player
-
-@onready var camera : Camera3D = $Camera3D
-@onready var ui := %UI
-
+const RAY_LENGTH = 1000
+@onready var camera := $Camera3D
 @export_category("Controller")
 @export var speed : float
 @export var run_multiplier : float
@@ -13,9 +11,6 @@ class_name Player
 @export var air_resistance_multiplier : float
 @export var air_movement_modifier : float
 @export var fov := 75
-
-
-
 func _unhandled_input(event):
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
@@ -27,7 +22,6 @@ var prev_pos : Vector3
 var run_time_elapsed := 0.0
 func _physics_process(delta):
 	var mouseCoord := get_viewport().get_mouse_position()
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -36,7 +30,6 @@ func _physics_process(delta):
 		velocity.y += jump_velocity
 	
 	var input_direction : Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	
 	var move_direction : Vector3 = (transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 	var movement_multiplier = speed
 	if (Input.is_action_pressed("move_run")):
@@ -49,7 +42,6 @@ func _physics_process(delta):
 	camera.fov = lerpf(fov, fov * run_multiplier, clamp(0, 1, run_time_elapsed * 2)) as int
 	
 	
-	
 	velocity += move_direction * speed * movement_multiplier
 	if is_on_floor():
 		velocity.x *= ground_friction_multiplier
@@ -58,15 +50,5 @@ func _physics_process(delta):
 		velocity.x *= air_resistance_multiplier
 		velocity.z *= air_resistance_multiplier
 	prev_pos = position
-	ui.set_property("Velocity", str(velocity.length()))
-	
-
-func _process(delta):
-	if Input.is_action_just_pressed("debug"):
-		if ui.is_debug_visible():
-			ui.hide_debug()
-		else:
-			ui.show_debug()
-
 
 	move_and_slide()
