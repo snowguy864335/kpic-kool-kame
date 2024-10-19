@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmkbie1s3juwa"]
-
-[ext_resource type="ArrayMesh" uid="uid://b5ohjdu5a4o0t" path="res://assets/models/monkey.obj" id="1_2adf4"]
-
-[node name="monkey" type="Node3D"]
-
-[node name="Monkey" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = ExtResource("1_2adf4")
