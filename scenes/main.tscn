@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cw68nrdep31id"]
+[gd_scene load_steps=24 format=3 uid="uid://cw68nrdep31id"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_t58hx"]
+[ext_resource type="ArrayMesh" uid="uid://b5ohjdu5a4o0t" path="res://assets/models/monkey.obj" id="2_cuhfu"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
 [ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="4_uqsrh"]
 [ext_resource type="PackedScene" uid="uid://efmlyd2vxg8n" path="res://scenes/shooty_player.tscn" id="5_fvnoa"]
@@ -50,6 +51,12 @@ points = PackedVector3Array(0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0
 
 [sub_resource type="Skin" id="Skin_gcepq"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6wpg6"]
+size = Vector3(1, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xyho"]
+size = Vector3(1, 10, 1)
+
 [node name="main" type="Node3D"]
 script = ExtResource("1_t58hx")
 
@@ -67,6 +74,10 @@ shape = SubResource("WorldBoundaryShape3D_v3f8u")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_5orgr")
+
+[node name="Monkey" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.54691, 1.79082, 7.01604)
+mesh = ExtResource("2_cuhfu")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6)
@@ -102,8 +113,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.81532, 9.33935, 3.19115)
 material_override = SubResource("StandardMaterial3D_ylie7")
 material_overlay = SubResource("StandardMaterial3D_1nsx1")
 transparency = 0.9
+speed_scale = 2.0
+explosiveness = 0.5
 process_material = SubResource("ParticleProcessMaterial_yalww")
 draw_pass_1 = SubResource("BoxMesh_ribx2")
 draw_skin = SubResource("Skin_gcepq")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 0)
+shape = SubResource("BoxShape3D_6wpg6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 0)
+mesh = SubResource("BoxMesh_7xyho")
 
 [editable path="UI"]

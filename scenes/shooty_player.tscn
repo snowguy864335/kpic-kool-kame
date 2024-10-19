@@ -3,16 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/player.tscn" id="1_noilx"]
 [ext_resource type="Script" path="res://scenes/shooty_player.gd" id="2_070in"]
 [ext_resource type="PackedScene" uid="uid://d06uiutvshy2" path="res://assets/models/Sniper.blend" id="2_ssolw"]
-[ext_resource type="Script" path="res://assets/models/sniper.gd" id="4_5g7hb"]
 [ext_resource type="Texture2D" uid="uid://cg0laar24bdm6" path="res://assets/Crosshair-PNG-Image-1210779893.png" id="4_bhm1d"]
-[ext_resource type="PackedScene" uid="uid://dmkbie1s3juwa" path="res://scenes/monkey.tscn" id="6_0d82s"]
+[ext_resource type="AudioStream" uid="uid://e33bwkdawnky" path="res://assets/noise .mp3" id="5_8hxpb"]
+[ext_resource type="PackedScene" uid="uid://5g884k4qwwnb" path="res://scenes/bullet_tracer.tscn" id="5_v0518"]
 
 [node name="ShootyPlayer" instance=ExtResource("1_noilx")]
 script = ExtResource("2_070in")
 
 [node name="Sniper" parent="." index="3" instance=ExtResource("2_ssolw")]
 transform = Transform3D(-5.24537e-10, 0, -0.012, 0, 0.012, 0, 0.012, 0, -5.24537e-10, -0.6, 1, -1.1)
-script = ExtResource("4_5g7hb")
 
 [node name="UI" type="Control" parent="." index="4"]
 layout_mode = 3
@@ -30,6 +29,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="UI" index="0"]
+position = Vector2(20, 16)
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("4_bhm1d")
 
@@ -49,5 +49,12 @@ autostart = true
 wait_time = 5.0
 one_shot = true
 
-[node name="monkey" parent="." index="7" instance=ExtResource("6_0d82s")]
+[node name="bullet_tracer" parent="." index="7" instance=ExtResource("5_v0518")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.327, -2.1)
 visible = false
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.327, -2.1)
+visible = false
+stream = ExtResource("5_8hxpb")
+volume_db = -15.0
