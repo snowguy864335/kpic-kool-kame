@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cw68nrdep31id"]
+[gd_scene load_steps=23 format=3 uid="uid://cw68nrdep31id"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_t58hx"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
 [ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="4_uqsrh"]
 [ext_resource type="PackedScene" uid="uid://efmlyd2vxg8n" path="res://scenes/shooty_player.tscn" id="5_fvnoa"]
-[ext_resource type="Script" path="res://scenes/ui.gd" id="5_tncmb"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="5_tncmb"]
+[ext_resource type="Texture2D" uid="uid://bdfigsl6klpsw" path="res://assets/textures/46562-1-bullet-holes-free-hd-image-776558060.png" id="6_vxcl0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -49,6 +50,8 @@ points = PackedVector3Array(0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0
 [sub_resource type="BoxMesh" id="BoxMesh_ribx2"]
 
 [sub_resource type="Skin" id="Skin_gcepq"]
+
+[sub_resource type="Curve3D" id="Curve3D_80gkq"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_t58hx")
@@ -95,6 +98,16 @@ mesh = SubResource("PrismMesh_6002w")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, -0.5, 0.5)
 shape = SubResource("ConvexPolygonShape3D_6uje0")
 
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.224144, -0.5, 0.836516, -0.125, 0.836516, 0.533494, -0.966506, -0.224144, 0.125, 4, 0.2, 9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4"]
+mesh = SubResource("PrismMesh_6002w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, -0.5, 0.5)
+shape = SubResource("ConvexPolygonShape3D_6uje0")
+
 [node name="ShootyPlayer" parent="." instance=ExtResource("5_fvnoa")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
@@ -105,5 +118,21 @@ transparency = 0.9
 process_material = SubResource("ParticleProcessMaterial_yalww")
 draw_pass_1 = SubResource("BoxMesh_ribx2")
 draw_skin = SubResource("Skin_gcepq")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375688, 0.0828646, -4.88922)
+rotation_edit_mode = 2
+size = Vector3(0.1, 0.2, 0.1)
+texture_albedo = ExtResource("6_vxcl0")
+upper_fade = 1e-05
+lower_fade = 2.54912e-05
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.63508, 3.32815, 0)
+polygon = PackedVector2Array(-3.99922, -7.55928, 0.000165462, 1.00213)
+
+[node name="Path3D" type="Path3D" parent="CSGPolygon3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.70665)
+curve = SubResource("Curve3D_80gkq")
 
 [editable path="UI"]

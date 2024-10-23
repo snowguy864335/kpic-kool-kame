@@ -18,9 +18,23 @@ func _unhandled_input(event):
 				var result = space_state.intersect_ray(query)
 				if(result):
 					print(result["position"])
+					var bullet_decal := Decal.new()
+					bullet_decal.texture_albedo = load("res://assets/textures/46562-1-bullet-holes-free-hd-image-776558060.png")
+					bullet_decal.upper_fade = 0
+					bullet_decal.lower_fade = 0
+					bullet_decal.size = Vector3(0.1, 0.2, 0.1)
+					bullet_decal.basis.y = result["normal"]
+					bullet_decal.basis.z = Vector3.FORWARD if result["normal"] == Vector3.UP else result["normal"].cross(Vector3.UP)
+					bullet_decal.basis.x = result["normal"].cross(bullet_decal.basis.z)
+					print(bullet_decal.basis)
+					
+					
+					bullet_decal.position = result["position"]
+					
 					var object_spawn = monkey.instantiate()
 					object_spawn.global_transform.origin = result["position"]
-					get_parent().add_child(object_spawn) #spawning a monkey cause why not and I should learn how anyways
+					#get_parent().add_child(object_spawn) #spawning a monkey cause why not and I should learn how anyways
+					get_parent().add_child(bullet_decal)
 				else:
 					print(end)
 				if(ammo > 0):

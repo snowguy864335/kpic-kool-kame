@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://efmlyd2vxg8n"]
+[gd_scene load_steps=8 format=3 uid="uid://efmlyd2vxg8n"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/player.tscn" id="1_noilx"]
 [ext_resource type="Script" path="res://scripts/shooty_player.gd" id="2_070in"]
@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cg0laar24bdm6" path="res://assets/textures/Crosshair-PNG-Image-1210779893.png" id="4_bhm1d"]
 [ext_resource type="PackedScene" uid="uid://dmkbie1s3juwa" path="res://scenes/monkey.tscn" id="6_0d82s"]
 [ext_resource type="Script" path="res://scripts/crosshair.gd" id="6_yuxb3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylcpn"]
-bg_color = Color(0.12549, 0.12549, 0.12549, 0.45098)
 
 [node name="ShootyPlayer" instance=ExtResource("1_noilx")]
 script = ExtResource("2_070in")
@@ -20,46 +17,34 @@ script = ExtResource("4_5g7hb")
 
 [node name="UI" type="Control" parent="." index="4"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-script = ExtResource("6_yuxb3")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI" index="0"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -211.0
-offset_top = -29.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ylcpn")
-text = "5/5"
-
-[node name="CenterContainer" type="CenterContainer" parent="UI" index="1"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.008, 0.008)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/CenterContainer" index="0"]
-layout_mode = 2
+[node name="Crosshair" type="Sprite2D" parent="UI" index="0"]
+position = Vector2(-12, -16)
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("4_bhm1d")
-expand_mode = 1
-stretch_mode = 3
+script = ExtResource("6_yuxb3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI" index="1"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 289.0
+offset_right = 594.0
+offset_bottom = 318.0
+text = "5/5"
 
 [node name="Timer" type="Timer" parent="." index="5"]
 one_shot = true
