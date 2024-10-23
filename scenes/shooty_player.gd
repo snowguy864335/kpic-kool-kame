@@ -1,5 +1,4 @@
 extends Player
-class_name ShootyPlayer
 const MATH_CONSTANT_PI = 3.141593
 @onready var timer = $Timer
 @onready var reloadtimer = $Timer2
