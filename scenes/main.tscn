@@ -135,6 +135,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, -
 shape = SubResource("ConvexPolygonShape3D_6uje0")
 
 [node name="ShootyPlayer" parent="." instance=ExtResource("5_fvnoa")]
+jump_velocity = 6.8
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.81532, 9.33935, 3.19115)
