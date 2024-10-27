@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://efmlyd2vxg8n"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/player.tscn" id="1_noilx"]
-[ext_resource type="Script" path="res://scenes/shooty_player.gd" id="2_070in"]
+[ext_resource type="Script" path="res://scripts/shooty_player.gd" id="2_070in"]
 [ext_resource type="PackedScene" uid="uid://d06uiutvshy2" path="res://assets/models/Sniper.blend" id="2_ssolw"]
 [ext_resource type="Texture2D" uid="uid://cg0laar24bdm6" path="res://assets/Crosshair-PNG-Image-1210779893.png" id="4_bhm1d"]
 [ext_resource type="AudioStream" uid="uid://e33bwkdawnky" path="res://assets/noise .mp3" id="5_8hxpb"]
