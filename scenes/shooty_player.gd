@@ -102,8 +102,8 @@ func ammo_counter():
 		ammoCounter.clear()
 		ammoCounter.add_text("Ammo: " + str(ammo) + " /5")
 func does_it_bounce(direction,normal) -> bool: #temp function, only works for top and bottom of unrotated cubes
-	var bounce_angle = 0
-	if(bounce_angle <= MATH_CONSTANT_PI/6 and bounce_count < 3):
+	var bounce_angle = (-direction).dot(normal)
+	if(bounce_angle <= 0.3 and bounce_count < 3):
 		bounce_count += 1
 		print("This would've bounced! Bounce count: " + str(bounce_count))
 		return true
