@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1bh2tkrln441"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_a7eux"]
+[ext_resource type="Texture2D" uid="uid://bqvoh4ocxnj2t" path="res://textures/HATSUNEMIKU.jpg" id="1_gjp5o"]
+[ext_resource type="Texture2D" uid="uid://c2w8fj7hgs1nc" path="res://textures/_A4EAB27C-0B71-47EC-AC4D-8FD67CFD205F_-removebg-preview (1).png" id="2_j5o7r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tu74"]
+texture = ExtResource("1_gjp5o")
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avltm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvv14"]
+content_margin_left = 100.0
+bg_color = Color(0, 0, 0, 0.8)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txdxx"]
+content_margin_left = 100.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cosjt"]
+bg_color = Color(0, 0, 0, 0.8)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 100.0
+
+[sub_resource type="GDScript" id="GDScript_ujjcy"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass"
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a7eux")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1tu74")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -312.0
+offset_right = 440.0
+offset_bottom = -72.0
+grow_vertical = 0
+
+[node name="Start Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_avltm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hvv14")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_txdxx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cosjt")
+text = "スタート"
+script = SubResource("GDScript_ujjcy")
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_avltm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hvv14")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_txdxx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cosjt")
+text = " 設定"
+
+[node name="Quit Game" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_avltm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hvv14")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_txdxx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cosjt")
+text = "終了"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 328.0
+offset_right = 1207.19
+offset_bottom = 632.0
+texture = ExtResource("2_j5o7r")
+expand_mode = 3
+
+[connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit Game" to="." method="_on_quit_game_pressed"]
