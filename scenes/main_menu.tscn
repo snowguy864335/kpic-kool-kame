@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1bh2tkrln441"]
+[gd_scene load_steps=10 format=3 uid="uid://dwl57c6c7y0pt"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_a7eux"]
 [ext_resource type="Texture2D" uid="uid://bqvoh4ocxnj2t" path="res://textures/HATSUNEMIKU.jpg" id="1_gjp5o"]
