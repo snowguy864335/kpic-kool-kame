@@ -6,13 +6,15 @@ signal onDeath()
 
 @export_category("Health")
 @export var maxHealth := 10
-var health : int = maxHealth
+@onready var health : int = maxHealth
 
 func changeHealth(amount : int) -> void:
 	health += amount
 	onHealthChange.emit(amount)
 	if (health <= 0):
 		onDeath.emit()
+		get_parent().queue_free()
+	
 
 func setHealth(newValue : int, emitOnHealthChange : bool) -> void:
 	var changeAmount = newValue - health

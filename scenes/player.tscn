@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ll11ns2il6mj"]
+[gd_scene load_steps=7 format=3 uid="uid://ll11ns2il6mj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_iu2tr"]
 [ext_resource type="PackedScene" uid="uid://nnfgxwyk5tia" path="res://scenes/HealthComponent.tscn" id="2_qbuwg"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cllxikl7s8po6" path="res://scenes/HitboxComponent.tscn" id="3_wms67"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tyipt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fm4c2"]
+size = Vector3(1, 2, 1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_iu2tr")
@@ -38,7 +41,9 @@ one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qbuwg")]
 
-[node name="HitboxComponent" parent="." instance=ExtResource("3_wms67")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_wms67")]
+healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
-shape = ExtResource("2_xq217")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185928, 0.95268, 0.00622559)
+shape = SubResource("BoxShape3D_fm4c2")

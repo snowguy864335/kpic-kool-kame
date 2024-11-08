@@ -11,7 +11,6 @@ var bounce_count : int = 0
 var penetration_depth := 0.2
 var exclusion_list : Array = []
 
-
 func _unhandled_input(event):
 	exclusion_list = []
 	super(event)
@@ -34,12 +33,12 @@ func _unhandled_input(event):
 				ammo_counter()
 
 
-
 func cast_ray(is_bounce: bool, bounce_origin : Vector3, 
 ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) -> void:
 	var origin : Vector3 = Vector3(0,0,0)
 	var end : Vector3 = Vector3(0,0,0)
 	var direction : Vector3 = Vector3(0,0,0)
+
 	var space_state = get_world_3d().direct_space_state
 	
 	if(!is_bounce and ricoshot_direction.is_equal_approx(Vector3(0,0,0))):
@@ -50,9 +49,16 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 		origin = bounce_origin + ricoshot_direction * 0.01
 		end =  origin + ricoshot_direction * 1000
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
-	query.exclude = exclusion_list
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+
 	var result = space_state.intersect_ray(query)
 	if(result):
+		
+		var collider = result["collider"]
+		if collider is HitboxComponent:
+			collider.hit(10)
+		
 		direction = (end-origin).normalized()
 		var normal = result["normal"].normalized()
 		

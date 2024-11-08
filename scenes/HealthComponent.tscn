@@ -4,3 +4,4 @@
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_ibkc3")
+maxHealth = 100
