@@ -130,7 +130,6 @@ func does_it_penetrate(origin : Vector3,direction : Vector3, object : Object) ->
 	var penetration_space_state := get_world_3d().direct_space_state
 	var penetration_check_info := penetration_space_state.intersect_point(query,1)
 	if(penetration_check_info.is_empty()):
-		print("it's working!!!")
 		var i : int = 20
 		while(i >= 0):
 			query.position = origin + direction * (penetration_depth / i)
@@ -143,4 +142,3 @@ func does_it_penetrate(origin : Vector3,direction : Vector3, object : Object) ->
 			
 	else:
 		penetration_depth = 0.2
-		print("failure!!!")
