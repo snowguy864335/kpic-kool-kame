@@ -65,6 +65,7 @@ func cast_ray(is_bounce: bool, bounce_origin : Vector3,ricoshot_direction : Vect
 		bounce_count = 0
 		bullet_trail(end)
 		penetration_depth = 0.2
+#Any commented awaits in a bullet trail function are there for testing purposes
 func bullet_trail(end_point : Vector3) -> void: #this function is completely fine don't touch it
 	bounce_count = 0
 	var bullet_trail = bulletTrail.instantiate()
@@ -79,8 +80,8 @@ func bullet_trail(end_point : Vector3) -> void: #this function is completely fin
 	bullet_trail.scale = Vector3(1,1,trail_length * 20 + 0.05)
 	get_parent().add_child(bullet_trail)
 	epic_noise.play()
-	#await get_tree().create_timer(0.25).timeout
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(0.25).timeout
+	#await get_tree().create_timer(2.5).timeout
 	get_parent().remove_child(bullet_trail)
 func bullet_trail_bounce(start_point : Vector3,bullet_direction : Vector3,end_point : Vector3) -> void:
 	var bullet_trail = bulletTrail.instantiate()
@@ -93,8 +94,8 @@ func bullet_trail_bounce(start_point : Vector3,bullet_direction : Vector3,end_po
 	bullet_trail.rotation = Vector3(x_rotation,y_rotation,0)
 	bullet_trail.scale = Vector3(1,1,trail_length * 20 + 0.05)
 	get_parent().add_child(bullet_trail)
-	#await get_tree().create_timer(0.25).timeout
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(0.25).timeout
+	#await get_tree().create_timer(2.5).timeout
 	get_parent().remove_child(bullet_trail)
 func ammo_counter() -> void:
 	if(ammo > 1):
