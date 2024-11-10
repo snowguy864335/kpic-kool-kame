@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwl57c6c7y0pt"]
 
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_a7eux"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_a7eux"]
 [ext_resource type="Texture2D" uid="uid://bqvoh4ocxnj2t" path="res://textures/HATSUNEMIKU.jpg" id="1_gjp5o"]
 [ext_resource type="Texture2D" uid="uid://c2w8fj7hgs1nc" path="res://textures/_A4EAB27C-0B71-47EC-AC4D-8FD67CFD205F_-removebg-preview (1).png" id="2_j5o7r"]
 
