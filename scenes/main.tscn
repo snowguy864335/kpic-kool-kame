@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
 [ext_resource type="PackedScene" uid="uid://cyqp2jrqmh7qv" path="res://scenes/UI.tscn" id="4_uqsrh"]
 [ext_resource type="PackedScene" uid="uid://efmlyd2vxg8n" path="res://scenes/shooty_player.tscn" id="5_fvnoa"]
-[ext_resource type="Script" path="res://scenes/ui.gd" id="5_tncmb"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="5_ulgyx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -119,7 +119,7 @@ shape = SubResource("BoxShape3D_lgvwk")
 [node name="UI" parent="." instance=ExtResource("4_uqsrh")]
 unique_name_in_owner = true
 mouse_filter = 2
-script = ExtResource("5_tncmb")
+script = ExtResource("5_ulgyx")
 
 [node name="ColorRect" parent="UI" index="0"]
 visible = false

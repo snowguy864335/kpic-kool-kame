@@ -10,7 +10,7 @@
 [node name="ShootyPlayer" instance=ExtResource("1_noilx")]
 script = ExtResource("2_070in")
 
-[node name="Sniper" parent="." index="3" instance=ExtResource("2_ssolw")]
+[node name="Player_weapon" parent="." index="3" instance=ExtResource("2_ssolw")]
 transform = Transform3D(-5.24537e-10, 0, -0.012, 0, 0.012, 0, 0.012, 0, -5.24537e-10, -0.6, 1, -1.1)
 
 [node name="UI" type="Control" parent="." index="4"]
