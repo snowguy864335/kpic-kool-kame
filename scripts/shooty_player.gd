@@ -10,6 +10,8 @@ var ammo : int = 5
 var bounce_count : int = 0
 var penetration_depth := 0.2
 var exclusion_list : Array = []
+
+
 func _unhandled_input(event):
 	exclusion_list = []
 	super(event)
@@ -30,11 +32,14 @@ func _unhandled_input(event):
 				penetration_depth = 0.2
 				cast_ray(false, Vector3(0,0,0),Vector3(0,0,0), exclusion_list)
 				ammo_counter()
+
+
 func cast_ray(is_bounce: bool, bounce_origin : Vector3,ricoshot_direction : Vector3, exlusion_list : Array) -> void:
 	var origin : Vector3 = Vector3(0,0,0)
 	var end : Vector3 = Vector3(0,0,0)
 	var direction : Vector3 = Vector3(0,0,0)
 	var space_state = get_world_3d().direct_space_state
+	
 	if(!is_bounce and ricoshot_direction.is_equal_approx(Vector3(0,0,0))):
 		var mousepos = get_viewport().get_mouse_position()
 		origin = camera.project_ray_origin(mousepos)
@@ -48,23 +53,29 @@ func cast_ray(is_bounce: bool, bounce_origin : Vector3,ricoshot_direction : Vect
 	if(result):
 		direction = (end-origin).normalized()
 		var normal = result["normal"].normalized()
+		
 		if(!is_bounce):
-			bullet_trail(result["position"])
+			BulletTrailManager.create_bullet_trail(origin, result["position"], camera.global_basis.z, 0.02)
+		
 		if(is_bounce):
-			bullet_trail_bounce(origin,direction,result["position"])
-		if(does_it_bounce(direction,normal) and bounce_count <= 3):
+			BulletTrailManager.create_bullet_trail(origin, result["position"], camera.global_basis.z, 0.02)
+		
+		if(does_it_bounce(direction, normal) and bounce_count <= 3):
 			var bounce = direction.bounce(normal)
 			cast_ray(true,result["position"],bounce, exclusion_list)
 		else:
 			does_it_penetrate(result["position"],direction,result["collider"])
+	
 	elif(is_bounce):
 		bounce_count = 0
-		bullet_trail_bounce(origin,ricoshot_direction,end)
+		BulletTrailManager.create_bullet_trail(origin, end, direction, 0.02)
 		penetration_depth = 0.2
 	else:
 		bounce_count = 0
-		bullet_trail(end)
+		BulletTrailManager.create_bullet_trail(origin, end, direction, 0.02)
 		penetration_depth = 0.2
+
+
 #Any commented awaits in a bullet trail function are there for testing purposes
 func bullet_trail(end_point : Vector3) -> void: #this function is completely fine don't touch it
 	bounce_count = 0
@@ -83,6 +94,8 @@ func bullet_trail(end_point : Vector3) -> void: #this function is completely fin
 	await get_tree().create_timer(0.25).timeout
 	#await get_tree().create_timer(2.5).timeout
 	get_parent().remove_child(bullet_trail)
+
+
 func bullet_trail_bounce(start_point : Vector3,bullet_direction : Vector3,end_point : Vector3) -> void:
 	var bullet_trail = bulletTrail.instantiate()
 	var direction = bullet_direction
@@ -97,6 +110,8 @@ func bullet_trail_bounce(start_point : Vector3,bullet_direction : Vector3,end_po
 	await get_tree().create_timer(0.25).timeout
 	#await get_tree().create_timer(2.5).timeout
 	get_parent().remove_child(bullet_trail)
+
+
 func ammo_counter() -> void:
 	if(ammo > 1):
 		timer.start(1)
@@ -114,6 +129,8 @@ func ammo_counter() -> void:
 		ammo = 5
 		ammoCounter.clear()
 		ammoCounter.add_text("Ammo: " + str(ammo) + " /5")
+
+
 func does_it_bounce(direction : Vector3,normal : Vector3) -> bool:
 	var bounce_angle = (-direction).dot(normal)
 	if(bounce_angle <= 0.3 and bounce_count < 3):
@@ -122,6 +139,8 @@ func does_it_bounce(direction : Vector3,normal : Vector3) -> bool:
 		penetration_depth *= 0.8
 	bounce_count = 0
 	return false
+
+
 func does_it_penetrate(origin : Vector3,direction : Vector3, object : Object) -> void:
 	exclusion_list.append(object)
 	var penetration_check_end_point : Vector3 = origin + direction * penetration_depth

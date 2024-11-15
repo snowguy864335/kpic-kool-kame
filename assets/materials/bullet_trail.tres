@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dxg6gud37j8l0"]
+
+[ext_resource type="Shader" path="res://assets/shaders/bullet_trail.gdshader" id="1_636f1"]
+
+[sub_resource type="Gradient" id="Gradient_anc1a"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mdad5"]
+gradient = SubResource("Gradient_anc1a")
+fill_from = Vector2(1, 1)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_636f1")
+shader_parameter/line_width = 1.0
+shader_parameter/line_length = 1.0
+shader_parameter/correct_uv = false
+shader_parameter/default_axis = Vector3(1, 1, 0)
+shader_parameter/color = Color(1, 0.231373, 1, 1)
+shader_parameter/brightness = 1.0
+shader_parameter/animation_time = 1.0
+shader_parameter/albedo = SubResource("GradientTexture2D_mdad5")
