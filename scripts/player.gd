@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 const RAY_LENGTH = 1000
-@onready var camera := $Camera3D
+@onready var camera : Camera3D = $Camera3D
 @onready var dash_cooldown : Timer = $DashCooldown
 @onready var dash_momentum : Timer = $DashMomentum
 @export_category("Controller")

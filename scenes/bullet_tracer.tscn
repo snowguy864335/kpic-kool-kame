@@ -1,17 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://5g884k4qwwnb"]
+[gd_scene load_steps=3 format=3 uid="uid://ba8mgws2iqdfp"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gxq27"]
-size = Vector3(0.01, 0.01, 0.05)
+[ext_resource type="Script" path="res://scripts/bullet_tracer.gd" id="1_lhft5"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_4anni"]
-size = Vector3(0.05, 0.05, 0.05)
+[sub_resource type="QuadMesh" id="QuadMesh_qws3p"]
 
-[node name="bullet_tracer" type="Node3D"]
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_gxq27")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_4anni")
+[node name="bullet_tracer" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_qws3p")
+script = ExtResource("1_lhft5")
