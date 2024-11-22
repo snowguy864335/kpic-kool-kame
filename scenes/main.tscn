@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cw68nrdep31id"]
+[gd_scene load_steps=35 format=3 uid="uid://cw68nrdep31id"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_t58hx"]
 [ext_resource type="ArrayMesh" uid="uid://b5ohjdu5a4o0t" path="res://assets/models/monkey.obj" id="2_cuhfu"]
@@ -84,6 +84,8 @@ size = Vector3(5, 5, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_c7jhr"]
 size = Vector3(5, 5, 0.1)
+
+[sub_resource type="PointMesh" id="PointMesh_uhv3y"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_t58hx")
@@ -218,5 +220,9 @@ light_color = Color(0.780127, 0.775967, 0.179566, 1)
 light_energy = 20.0
 spot_range = 50.0
 spot_angle = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16323, 3.74185, 0)
+mesh = SubResource("PointMesh_uhv3y")
 
 [editable path="UI"]
