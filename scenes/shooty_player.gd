@@ -49,15 +49,30 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 		origin = bounce_origin + ricoshot_direction * 0.01
 		end =  origin + ricoshot_direction * 1000
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
+	query.collide_with_bodies = true
 	query.collide_with_areas = true
-	query.collide_with_bodies = false
-
+	query.exclude.append(collisionbox.shape.get_rid())
+	query.exclude.append(hurtbox.shape.get_rid())
 	var result = space_state.intersect_ray(query)
 	if(result):
+		var damage_query = PhysicsShapeQueryParameters3D.new();
+		var shape = SphereShape3D.new()
+		shape.radius = 0.01
+		damage_query.shape = shape
+		damage_query.transform = damage_query.transform.translated(result["position"])
 		
-		var collider = result["collider"]
-		if collider is HitboxComponent:
-			collider.hit(10)
+		damage_query.collide_with_areas = true
+		damage_query.collide_with_bodies = true
+		var damage_result = space_state.intersect_shape(damage_query)
+		print(damage_result)
+		#point_query.position = result["position"];
+		#point_query.collide_with_areas = true
+		#point_query.collide_with_bodies = false
+		#var point_result = space_state.intersect_point(point_query)
+		for collision in damage_result:
+			if (collision["collider"] is HitboxComponent):
+				collision["collider"].hit(10)
+			
 		
 		direction = (end-origin).normalized()
 		var normal = result["normal"].normalized()
@@ -67,8 +82,9 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 		
 		if(is_bounce):
 			BulletTrailManager.create_bullet_trail(origin, result["position"], camera.global_basis.z, 0.02, start_length)
-		
+
 		if(does_it_bounce(direction, normal) and bounce_count <= 3):
+			
 			var bounce = direction.bounce(normal)
 			cast_ray(true,result["position"],bounce, exclusion_list, start_length + (result["position"] - origin).length() * 100)
 		else:

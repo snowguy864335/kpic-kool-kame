@@ -8,6 +8,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tyipt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fm4c2"]
+resource_local_to_scene = true
 size = Vector3(1, 2, 1)
 
 [node name="Player" type="CharacterBody3D"]

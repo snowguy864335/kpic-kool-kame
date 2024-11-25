@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://efmlyd2vxg8n"]
+[gd_scene load_steps=8 format=3 uid="uid://efmlyd2vxg8n"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/player.tscn" id="1_noilx"]
 [ext_resource type="Script" path="res://scenes/shooty_player.gd" id="2_070in"]
@@ -7,8 +7,16 @@
 [ext_resource type="AudioStream" uid="uid://e33bwkdawnky" path="res://assets/noise .mp3" id="5_8hxpb"]
 [ext_resource type="PackedScene" uid="uid://ba8mgws2iqdfp" path="res://scenes/bullet_tracer.tscn" id="5_v0518"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sqwh2"]
+resource_local_to_scene = true
+radius = 0.516974
+height = 1.98206
+
 [node name="ShootyPlayer" instance=ExtResource("1_noilx")]
 script = ExtResource("2_070in")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_sqwh2")
 
 [node name="Player_weapon" parent="." index="3" instance=ExtResource("2_ssolw")]
 transform = Transform3D(-5.24537e-10, 0, -0.012, 0, 0.012, 0, 0.012, 0, -5.24537e-10, -0.6, 1, -1.1)

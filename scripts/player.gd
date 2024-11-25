@@ -4,6 +4,8 @@ const RAY_LENGTH = 1000
 @onready var camera : Camera3D = $Camera3D
 @onready var dash_cooldown : Timer = $DashCooldown
 @onready var dash_momentum : Timer = $DashMomentum
+@onready var collisionbox : CollisionShape3D = $CollisionShape3D
+@onready var hurtbox : CollisionShape3D = $HitboxComponent/CollisionShape3D
 @export_category("Controller")
 @export var speed : float
 @export var run_multiplier : float
