@@ -6,7 +6,12 @@ signal onHit(amount : int)
 @export_category("Hitbox")
 @export var healthComponent : HealthComponent
 
-func hit(damage : int) -> void:
+func hit(damage : int, bypassOneShotProtection : bool = false) -> void:
 	onHit.emit(damage)
 	if (healthComponent):
-		healthComponent.changeHealth(-damage);
+		if (healthComponent.health >= healthComponent.maxHealth
+		 and healthComponent.health - damage < 0
+		 and not bypassOneShotProtection):
+			healthComponent.setHealth(1, true)
+		else:
+			healthComponent.changeHealth(-damage)
