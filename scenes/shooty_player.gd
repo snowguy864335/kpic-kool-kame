@@ -11,7 +11,6 @@ var bounce_count : int = 0
 var penetration_depth := 0.2
 var exclusion_list : Array = []
 
-
 func _unhandled_input(event):
 	exclusion_list = []
 	super(event)
@@ -34,12 +33,12 @@ func _unhandled_input(event):
 				ammo_counter()
 
 
-
 func cast_ray(is_bounce: bool, bounce_origin : Vector3, 
 ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) -> void:
 	var origin : Vector3 = Vector3(0,0,0)
 	var end : Vector3 = Vector3(0,0,0)
 	var direction : Vector3 = Vector3(0,0,0)
+
 	var space_state = get_world_3d().direct_space_state
 	
 	if(!is_bounce and ricoshot_direction.is_equal_approx(Vector3(0,0,0))):
@@ -50,9 +49,26 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 		origin = bounce_origin + ricoshot_direction * 0.01
 		end =  origin + ricoshot_direction * 1000
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
-	query.exclude = exclusion_list
+	query.collide_with_bodies = true
+	query.collide_with_areas = true
+	query.exclude.append(collisionbox.shape.get_rid())
+	query.exclude.append(hurtbox.shape.get_rid())
 	var result = space_state.intersect_ray(query)
 	if(result):
+		var damage_query = PhysicsShapeQueryParameters3D.new();
+		var shape = SphereShape3D.new()
+		shape.radius = 0.01
+		damage_query.shape = shape
+		damage_query.transform = damage_query.transform.translated(result["position"])
+		
+		damage_query.collide_with_areas = true
+		damage_query.collide_with_bodies = true
+		var damage_result = space_state.intersect_shape(damage_query)
+		for collision in damage_result:
+			if (collision["collider"] is HitboxComponent):
+				collision["collider"].hit(10)
+			
+		
 		direction = (end-origin).normalized()
 		var normal = result["normal"].normalized()
 		
@@ -61,8 +77,9 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 		
 		if(is_bounce):
 			BulletTrailManager.create_bullet_trail(origin, result["position"], camera.global_basis.z, 0.02, start_length)
-		
+
 		if(does_it_bounce(direction, normal) and bounce_count <= 3):
+			
 			var bounce = direction.bounce(normal)
 			cast_ray(true,result["position"],bounce, exclusion_list, start_length + (result["position"] - origin).length() * 100)
 		else:

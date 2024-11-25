@@ -1,0 +1,6 @@
+[gd_resource type="CapsuleShape3D" format=3 uid="uid://dc6uxouulibdg"]
+
+[resource]
+resource_local_to_scene = true
+radius = 0.516974
+height = 1.98206

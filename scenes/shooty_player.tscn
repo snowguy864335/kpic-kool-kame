@@ -1,14 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://efmlyd2vxg8n"]
+[gd_scene load_steps=9 format=3 uid="uid://efmlyd2vxg8n"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/player.tscn" id="1_noilx"]
-[ext_resource type="Script" path="res://scripts/shooty_player.gd" id="2_070in"]
+[ext_resource type="Script" path="res://scenes/shooty_player.gd" id="2_070in"]
 [ext_resource type="PackedScene" uid="uid://d06uiutvshy2" path="res://assets/models/Sniper.blend" id="2_ssolw"]
 [ext_resource type="Texture2D" uid="uid://cg0laar24bdm6" path="res://assets/Crosshair-PNG-Image-1210779893.png" id="4_bhm1d"]
 [ext_resource type="AudioStream" uid="uid://e33bwkdawnky" path="res://assets/noise .mp3" id="5_8hxpb"]
 [ext_resource type="PackedScene" uid="uid://ba8mgws2iqdfp" path="res://scenes/bullet_tracer.tscn" id="5_v0518"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sqwh2"]
+resource_local_to_scene = true
+radius = 0.516974
+height = 1.98206
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oouwt"]
+resource_local_to_scene = true
+size = Vector3(1, 2, 1)
+
 [node name="ShootyPlayer" instance=ExtResource("1_noilx")]
 script = ExtResource("2_070in")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_sqwh2")
 
 [node name="Player_weapon" parent="." index="3" instance=ExtResource("2_ssolw")]
 transform = Transform3D(-5.24537e-10, 0, -0.012, 0, 0.012, 0, 0.012, 0, -5.24537e-10, -0.6, 1, -1.1)
@@ -58,3 +70,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.327, -2.1)
 visible = false
 stream = ExtResource("5_8hxpb")
 volume_db = -15.0
+
+[node name="CollisionShape3D" parent="HitboxComponent" index="0"]
+shape = SubResource("BoxShape3D_oouwt")
