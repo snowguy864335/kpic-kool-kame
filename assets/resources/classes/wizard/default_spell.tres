@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="WizardSpell" load_steps=2 format=3 uid="uid://hfc26ilvjrbk"]
+
+[ext_resource type="Script" path="res://scripts/classes/wizard/spells/wizard_spell.gd" id="1_m8buc"]
+
+[resource]
+script = ExtResource("1_m8buc")

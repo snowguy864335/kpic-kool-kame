@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://b6afx51lf10g3"]
+
+[ext_resource type="Shader" path="res://assets/shaders/light_attack_orb.gdshader" id="1_nggp5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5ih6n"]
+frequency = 0.2363
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_6ilcl"]
+noise = SubResource("FastNoiseLite_5ih6n")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rukr4"]
+noise_type = 0
+frequency = 0.1421
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_d2ily"]
+width = 256
+height = 256
+depth = 256
+seamless = true
+noise = SubResource("FastNoiseLite_rukr4")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nggp5")
+shader_parameter/color1 = Color(0.306667, 0.280527, 0.128465, 1)
+shader_parameter/color2 = Color(0.800954, 0.477098, 0.0370079, 1)
+shader_parameter/distortionTexture = SubResource("NoiseTexture3D_d2ily")
+shader_parameter/albedoTexture = SubResource("NoiseTexture3D_6ilcl")

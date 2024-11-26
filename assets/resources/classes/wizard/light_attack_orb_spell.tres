@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LightAttackOrb" load_steps=3 format=3 uid="uid://cxwtl7tt56uwt"]
+
+[ext_resource type="PackedScene" uid="uid://dyf010033mjbu" path="res://scenes/classes/wizard/spells/light_attack_orb.tscn" id="1_2v1j3"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spells/light_attack_orb.gd" id="1_wvi5v"]
+
+[resource]
+script = ExtResource("1_wvi5v")
+orb_scene = ExtResource("1_2v1j3")

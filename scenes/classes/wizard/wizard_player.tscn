@@ -1,0 +1,33 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb845pg5yqftl"]
+
+[ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_38fy6"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/wizard_player.gd" id="2_k1s4l"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spells/wizard_spell.gd" id="3_gw5us"]
+[ext_resource type="Resource" uid="uid://hfc26ilvjrbk" path="res://assets/resources/classes/wizard/default_spell.tres" id="4_kx222"]
+[ext_resource type="Resource" uid="uid://cxwtl7tt56uwt" path="res://assets/resources/classes/wizard/light_attack_orb_spell.tres" id="5_i6wbr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlr0s"]
+resource_local_to_scene = true
+radius = 0.516974
+height = 1.98206
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6m3h"]
+resource_local_to_scene = true
+size = Vector3(1, 2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ja2dm"]
+
+[node name="WizardPlayer" node_paths=PackedStringArray("spell_circle") instance=ExtResource("1_38fy6")]
+script = ExtResource("2_k1s4l")
+spells = Array[ExtResource("3_gw5us")]([ExtResource("4_kx222"), ExtResource("5_i6wbr")])
+spell_circle = NodePath("SpellCircle")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_qlr0s")
+
+[node name="CollisionShape3D" parent="HitboxComponent" index="0"]
+shape = SubResource("BoxShape3D_l6m3h")
+
+[node name="SpellCircle" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710771, 1.00376, -1.00659)
+mesh = SubResource("QuadMesh_ja2dm")
