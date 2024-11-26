@@ -7,13 +7,13 @@ const RAY_LENGTH = 1000
 @onready var collisionbox : CollisionShape3D = $CollisionShape3D
 @onready var hurtbox : CollisionShape3D = $HitboxComponent/CollisionShape3D
 @export_category("Controller")
-@export var speed : float
-@export var run_multiplier : float
-@export var mouse_sensitivity : float
-@export var jump_velocity : float
-@export var ground_friction_multiplier : float
-@export var air_resistance_multiplier : float
-@export var air_movement_modifier : float
+@export var speed : float = 1
+@export var run_multiplier : float = 1.3
+@export var mouse_sensitivity : float = 0.5
+@export var jump_velocity : float = 6.8
+@export var ground_friction_multiplier : float = 0.83
+@export var air_resistance_multiplier : float = 0.94
+@export var air_movement_modifier : float = 0.4
 @export var fov := 75
 
 func _unhandled_input(event):
