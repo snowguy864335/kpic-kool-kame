@@ -1,8 +1,8 @@
 extends MeshInstance3D
 class_name BulletTracer
 
-var shader_mat : ShaderMaterial = preload("res://assets/materials/bullet_trail.tres")
-var mask_tex : Texture2D = preload("res://assets/texures/bullet_trail_mask.tres")
+var bullet_trail_shader_material : ShaderMaterial = preload("res://assets/materials/bullet_trail.tres")
+var bullet_trail_shader_mask_texture : Texture2D = preload("res://assets/textures/bullet_trail_mask.tres")
 
 var speed : float = 0
 
@@ -17,7 +17,7 @@ func set_length(len : float) -> void:
 	var shader := quad_mesh.material as ShaderMaterial
 	
 	shader.set_shader_parameter("line_length", len)
-	shader.set_shader_parameter("mask", mask_tex)
+	shader.set_shader_parameter("mask", bullet_trail_shader_mask_texture)
 	
 
 
@@ -65,7 +65,7 @@ func set_animation_speed(speed: float) -> void:
 func _init() -> void:
 	start_time = Time.get_ticks_msec()
 	mesh = QuadMesh.new()
-	mesh.material = shader_mat.duplicate(true)
+	mesh.material = bullet_trail_shader_material.duplicate(true)
 
 
 func _process(delta: float) -> void:

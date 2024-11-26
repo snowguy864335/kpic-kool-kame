@@ -1,11 +1,11 @@
 [gd_scene load_steps=35 format=3 uid="uid://cw68nrdep31id"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_t58hx"]
+[ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_t58hx"]
 [ext_resource type="ArrayMesh" uid="uid://b5ohjdu5a4o0t" path="res://assets/models/monkey.obj" id="2_cuhfu"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
-[ext_resource type="PackedScene" uid="uid://cyqp2jrqmh7qv" path="res://scenes/UI.tscn" id="4_uqsrh"]
-[ext_resource type="PackedScene" uid="uid://efmlyd2vxg8n" path="res://scenes/shooty_player.tscn" id="5_fvnoa"]
-[ext_resource type="Script" path="res://scripts/ui.gd" id="5_ulgyx"]
+[ext_resource type="PackedScene" uid="uid://cyqp2jrqmh7qv" path="res://scenes/interface/UI.tscn" id="4_uqsrh"]
+[ext_resource type="PackedScene" uid="uid://efmlyd2vxg8n" path="res://scenes/classes/sniper/shooty_player.tscn" id="5_fvnoa"]
+[ext_resource type="Script" path="res://scripts/interface/ui.gd" id="5_ulgyx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

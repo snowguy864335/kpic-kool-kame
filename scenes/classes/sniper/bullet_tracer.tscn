@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ba8mgws2iqdfp"]
 
-[ext_resource type="Script" path="res://scripts/bullet_tracer.gd" id="1_lhft5"]
+[ext_resource type="Script" path="res://scripts/classes/sniper/bullet_tracer.gd" id="1_lhft5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_qws3p"]
 

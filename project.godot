@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="kpic kool kame"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/interface/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,6 +28,16 @@ window/size/viewport_height=1080
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://assets/": "green",
+"res://scenes/": "red",
+"res://scripts/": "orange",
+"res://scripts/autoloads/": "gray"
+}
 
 [input]
 

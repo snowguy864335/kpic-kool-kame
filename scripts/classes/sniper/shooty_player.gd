@@ -3,9 +3,9 @@ const MATH_CONSTANT_PI = 3.141593
 @onready var timer = $Timer
 @onready var reloadtimer = $Timer2
 @onready var ammoCounter = $UI/RichTextLabel
-var bulletTrail = preload("res://scenes/bullet_tracer.tscn")
 @onready var epic_noise = $AudioStreamPlayer3D
 @onready var weapon = $Player_weapon
+
 var ammo : int = 5
 var bounce_count : int = 0
 var penetration_depth := 0.2

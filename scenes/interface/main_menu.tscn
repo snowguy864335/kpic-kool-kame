@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwl57c6c7y0pt"]
+[gd_scene load_steps=11 format=3 uid="uid://dwl57c6c7y0pt"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_a7eux"]
-[ext_resource type="Texture2D" uid="uid://bqvoh4ocxnj2t" path="res://textures/HATSUNEMIKU.jpg" id="1_gjp5o"]
-[ext_resource type="Texture2D" uid="uid://c2w8fj7hgs1nc" path="res://textures/_A4EAB27C-0B71-47EC-AC4D-8FD67CFD205F_-removebg-preview (1).png" id="2_j5o7r"]
+[ext_resource type="Script" path="res://scripts/interface/main_menu.gd" id="1_7778t"]
+[ext_resource type="Texture2D" uid="uid://bqvoh4ocxnj2t" path="res://assets/textures/HATSUNEMIKU.jpg" id="2_nhwna"]
+[ext_resource type="PackedScene" uid="uid://cw68nrdep31id" path="res://scenes/levels/main.tscn" id="2_ph6tj"]
+[ext_resource type="Texture2D" uid="uid://c2w8fj7hgs1nc" path="res://assets/textures/_A4EAB27C-0B71-47EC-AC4D-8FD67CFD205F_-removebg-preview (1).png" id="3_dwyql"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tu74"]
-texture = ExtResource("1_gjp5o")
+texture = ExtResource("2_nhwna")
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
@@ -61,7 +62,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a7eux")
+script = ExtResource("1_7778t")
+main_scene = ExtResource("2_ph6tj")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -128,7 +130,7 @@ offset_left = 488.0
 offset_top = 328.0
 offset_right = 1207.19
 offset_bottom = 632.0
-texture = ExtResource("2_j5o7r")
+texture = ExtResource("3_dwyql")
 expand_mode = 3
 
 [connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]

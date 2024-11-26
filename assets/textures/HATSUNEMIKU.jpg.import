@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2w8fj7hgs1nc"
-path="res://.godot/imported/_A4EAB27C-0B71-47EC-AC4D-8FD67CFD205F_-removebg-preview (1).png-d97306e5f587b4745916c26a8134e3ab.ctex"
+uid="uid://bqvoh4ocxnj2t"
+path="res://.godot/imported/HATSUNEMIKU.jpg-13a97813fe9706ef2cfbb92b414d4356.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/_A4EAB27C-0B71-47EC-AC4D-8FD67CFD205F_-removebg-preview (1).png"
-dest_files=["res://.godot/imported/_A4EAB27C-0B71-47EC-AC4D-8FD67CFD205F_-removebg-preview (1).png-d97306e5f587b4745916c26a8134e3ab.ctex"]
+source_file="res://assets/textures/HATSUNEMIKU.jpg"
+dest_files=["res://.godot/imported/HATSUNEMIKU.jpg-13a97813fe9706ef2cfbb92b414d4356.ctex"]
 
 [params]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://efmlyd2vxg8n"]
 
-[ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/player.tscn" id="1_noilx"]
-[ext_resource type="Script" path="res://scenes/shooty_player.gd" id="2_070in"]
+[ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_noilx"]
+[ext_resource type="Script" path="res://scripts/classes/sniper/shooty_player.gd" id="2_070in"]
 [ext_resource type="PackedScene" uid="uid://d06uiutvshy2" path="res://assets/models/Sniper.blend" id="2_ssolw"]
-[ext_resource type="Texture2D" uid="uid://cg0laar24bdm6" path="res://assets/Crosshair-PNG-Image-1210779893.png" id="4_bhm1d"]
-[ext_resource type="AudioStream" uid="uid://e33bwkdawnky" path="res://assets/noise .mp3" id="5_8hxpb"]
-[ext_resource type="PackedScene" uid="uid://ba8mgws2iqdfp" path="res://scenes/bullet_tracer.tscn" id="5_v0518"]
+[ext_resource type="Texture2D" uid="uid://cg0laar24bdm6" path="res://assets/textures/Crosshair-PNG-Image-1210779893.png" id="4_bhm1d"]
+[ext_resource type="AudioStream" uid="uid://e33bwkdawnky" path="res://assets/sounds/noise .mp3" id="5_8hxpb"]
+[ext_resource type="PackedScene" uid="uid://ba8mgws2iqdfp" path="res://scenes/classes/sniper/bullet_tracer.tscn" id="5_v0518"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sqwh2"]
 resource_local_to_scene = true

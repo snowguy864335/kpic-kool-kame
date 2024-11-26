@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqvoh4ocxnj2t"
-path="res://.godot/imported/HATSUNEMIKU.jpg-b89475dccbb7aba7a7b9e81b0c226a64.ctex"
+uid="uid://cg0laar24bdm6"
+path="res://.godot/imported/Crosshair-PNG-Image-1210779893.png-096c08c5c1fd1591fadc4f7d941fa5bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/HATSUNEMIKU.jpg"
-dest_files=["res://.godot/imported/HATSUNEMIKU.jpg-b89475dccbb7aba7a7b9e81b0c226a64.ctex"]
+source_file="res://assets/textures/Crosshair-PNG-Image-1210779893.png"
+dest_files=["res://.godot/imported/Crosshair-PNG-Image-1210779893.png-096c08c5c1fd1591fadc4f7d941fa5bb.ctex"]
 
 [params]
 

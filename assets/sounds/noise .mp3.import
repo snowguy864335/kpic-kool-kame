@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://e33bwkdawnky"
+path="res://.godot/imported/noise .mp3-3b000c056a83d11a0fa007c5cf2b2a72.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/noise .mp3"
+dest_files=["res://.godot/imported/noise .mp3-3b000c056a83d11a0fa007c5cf2b2a72.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
