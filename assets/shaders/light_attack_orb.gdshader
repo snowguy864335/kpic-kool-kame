@@ -8,14 +8,14 @@ uniform vec3 color1 : source_color;
 uniform vec3 color2 : source_color;
 
 void vertex() {
-	vec4 world_coord = MODEL_MATRIX *  vec4(VERTEX, 1.);
-	VERTEX += NORMAL * texture(distortionTexture, world_coord.xyz / 4.).r * 0.05;
+	vec4 world_coord = vec4(VERTEX, 1.);
+	VERTEX += NORMAL * texture(distortionTexture, vec3(world_coord.xy, TIME / 4.) / 4.).r * 0.05;
 }
 
 void fragment() {
 	
 	vec4 world_coord = INV_VIEW_MATRIX * vec4(VERTEX, 1.);
-	ALBEDO =  mix(color1, color2, texture(albedoTexture, world_coord.xyz).r);
+	ALBEDO =  mix(color1, color2, texture(albedoTexture, vec3(world_coord.xy, TIME / 15.)).r);
 }
 
 //void light() {

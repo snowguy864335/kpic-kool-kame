@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb845pg5yqftl"]
+[gd_scene load_steps=12 format=3 uid="uid://cb845pg5yqftl"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_38fy6"]
 [ext_resource type="Script" path="res://scripts/classes/wizard/wizard_player.gd" id="2_k1s4l"]
 [ext_resource type="Script" path="res://scripts/classes/wizard/spells/wizard_spell.gd" id="3_gw5us"]
-[ext_resource type="Resource" uid="uid://hfc26ilvjrbk" path="res://assets/resources/classes/wizard/default_spell.tres" id="4_kx222"]
+[ext_resource type="Resource" uid="uid://k04clgk5m6k0" path="res://assets/resources/classes/wizard/wind_dash_spell.tres" id="4_stfjw"]
 [ext_resource type="Resource" uid="uid://cxwtl7tt56uwt" path="res://assets/resources/classes/wizard/light_attack_orb_spell.tres" id="5_i6wbr"]
+[ext_resource type="Resource" uid="uid://d3axwo4hdx4yn" path="res://assets/resources/classes/wizard/lightning_dash_spell.tres" id="6_6jpxs"]
+[ext_resource type="Texture2D" uid="uid://cql3lri4blhsq" path="res://assets/textures/magic_circle.png" id="6_i0woa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlr0s"]
 resource_local_to_scene = true
@@ -15,11 +17,20 @@ height = 1.98206
 resource_local_to_scene = true
 size = Vector3(1, 2, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pe0n"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+albedo_texture = ExtResource("6_i0woa")
+grow_amount = -1.195
+
 [sub_resource type="QuadMesh" id="QuadMesh_ja2dm"]
+material = SubResource("StandardMaterial3D_7pe0n")
 
 [node name="WizardPlayer" node_paths=PackedStringArray("spell_circle") instance=ExtResource("1_38fy6")]
 script = ExtResource("2_k1s4l")
-spells = Array[ExtResource("3_gw5us")]([ExtResource("4_kx222"), ExtResource("5_i6wbr")])
+spells = Array[ExtResource("3_gw5us")]([ExtResource("4_stfjw"), ExtResource("5_i6wbr"), ExtResource("6_6jpxs"), ExtResource("5_i6wbr"), ExtResource("5_i6wbr"), ExtResource("5_i6wbr")])
 spell_circle = NodePath("SpellCircle")
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -29,5 +40,5 @@ shape = SubResource("CapsuleShape3D_qlr0s")
 shape = SubResource("BoxShape3D_l6m3h")
 
 [node name="SpellCircle" type="MeshInstance3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710771, 1.00376, -1.00659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8016, 0.901856, -1.00659)
 mesh = SubResource("QuadMesh_ja2dm")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyf010033mjbu"]
 
 [ext_resource type="Material" uid="uid://b6afx51lf10g3" path="res://assets/materials/light_attack_orb.tres" id="1_erx3n"]
-[ext_resource type="Script" path="res://scenes/classes/wizard/spells/light_attack_orb.gd" id="1_ybnae"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_scenes/light_attack_orb.gd" id="1_ybnae"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_37qms"]
 radius = 0.15

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="WindDash" load_steps=2 format=3 uid="uid://k04clgk5m6k0"]
+
+[ext_resource type="Script" path="res://scripts/classes/wizard/spells/wind_dash.gd" id="1_1fjde"]
+
+[resource]
+script = ExtResource("1_1fjde")
