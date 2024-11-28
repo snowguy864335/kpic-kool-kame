@@ -53,5 +53,5 @@ healthComponent = NodePath("../HealthComponent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185928, 0.95268, 0.00622559)
 shape = SubResource("BoxShape3D_fm4c2")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="Player Synchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_2eeav")

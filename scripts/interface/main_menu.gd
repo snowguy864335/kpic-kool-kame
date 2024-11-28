@@ -4,7 +4,10 @@ extends Control
 @export var main_scene : PackedScene
 
 func _on_start_button_pressed() -> void:
-	MultiplayerPeerManager.create_client("127.0.0.1")
+	if $VBoxContainer/TextEdit.text == "":
+		MultiplayerPeerManager.create_client("127.0.0.1")
+	else:
+		MultiplayerPeerManager.create_client($VBoxContainer/TextEdit.text)
 
 
 func _on_host_button_pressed() -> void:

@@ -12,8 +12,11 @@ func _input(event):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _add_player(id : int):
-	print(str(multiplayer.get_unique_id()) + ": " + str(id))
-	var player = load("res://scenes/classes/player.tscn").instantiate()
+	print_rich(
+		"[NETWORK] [color=green]A peer numbered "
+		 + str(multiplayer.get_unique_id()) + " has connected to " + str(id) + "[/color]")
+	var player : Player = load("res://scenes/classes/sniper/shooty_player.tscn").instantiate()
+	player.position = $PlayerSpawnpoint.global_position
 	add_child(player)
 	player.set_multiplayer_authority(id)
 	player.name = str(id)

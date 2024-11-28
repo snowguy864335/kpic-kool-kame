@@ -14,6 +14,8 @@ var exclusion_list : Array = []
 func _unhandled_input(event):
 	exclusion_list = []
 	super(event)
+	if !is_multiplayer_authority():
+		return
 	#if event is InputEventMouseMotion: Weapon rotation with camera rotation to be implemented later
 		#weapon.rotate_x( (-event.relative.y * 0.01) * mouse_sensitivity)
 	if(Input.is_action_pressed("reload") and reloadtimer.is_stopped() and timer.is_stopped()):
@@ -73,10 +75,10 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 		var normal = result["normal"].normalized()
 		
 		if(!is_bounce):
-			BulletTrailManager.create_bullet_trail(origin, result["position"], camera.global_basis.z, 0.02, start_length)
+			BulletTrailManager.create_bullet_trail.rpc(origin, result["position"], camera.global_basis.z, 0.02, start_length)
 		
 		if(is_bounce):
-			BulletTrailManager.create_bullet_trail(origin, result["position"], camera.global_basis.z, 0.02, start_length)
+			BulletTrailManager.create_bullet_trail.rpc(origin, result["position"], camera.global_basis.z, 0.02, start_length)
 
 		if(does_it_bounce(direction, normal) and bounce_count <= 3):
 			
@@ -87,11 +89,11 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 	
 	elif(is_bounce):
 		bounce_count = 0
-		BulletTrailManager.create_bullet_trail(origin, end, direction, 0.02, start_length)
+		BulletTrailManager.create_bullet_trail.rpc(origin, end, direction, 0.02, start_length)
 		penetration_depth = 0.2
 	else:
 		bounce_count = 0
-		BulletTrailManager.create_bullet_trail(origin, end, direction, 0.02, start_length)
+		BulletTrailManager.create_bullet_trail.rpc(origin, end, direction, 0.02, start_length)
 		penetration_depth = 0.2
 
 func ammo_counter() -> void:

@@ -9,8 +9,10 @@ func _ready() -> void:
 
 
 func create_server():
+	print_rich("[NETWORK] [color=yellow]Attempting to create a server on port " + str(PORT))
 	var error = peer.create_server(PORT)
 	if error:
+		push_error()
 		push_error("ERROR WHILE CREATING SERVER: " + str(error))
 		return
 	multiplayer.multiplayer_peer = peer
@@ -18,6 +20,7 @@ func create_server():
 	
 
 func create_client(address : String):
+	print_rich("[NETWORK] [color=yellow]Attempting to connect to a server on address " + address + ":" + str(PORT))
 	var error = peer.create_client(address, PORT)
 	if error:
 		push_error("ERROR WHILE CONNECTING TO SERVER: " + error)
