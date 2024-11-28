@@ -1,10 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://cw68nrdep31id"]
+[gd_scene load_steps=34 format=3 uid="uid://cw68nrdep31id"]
 
 [ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_t58hx"]
 [ext_resource type="ArrayMesh" uid="uid://b5ohjdu5a4o0t" path="res://assets/models/monkey.obj" id="2_cuhfu"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
 [ext_resource type="PackedScene" uid="uid://cyqp2jrqmh7qv" path="res://scenes/interface/UI.tscn" id="4_uqsrh"]
-[ext_resource type="PackedScene" uid="uid://efmlyd2vxg8n" path="res://scenes/classes/sniper/shooty_player.tscn" id="5_fvnoa"]
 [ext_resource type="Script" path="res://scripts/interface/ui.gd" id="5_ulgyx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
@@ -135,8 +134,6 @@ mesh = SubResource("PrismMesh_6002w")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, -0.5, 0.5)
 shape = SubResource("ConvexPolygonShape3D_6uje0")
-
-[node name="ShootyPlayer" parent="." instance=ExtResource("5_fvnoa")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.81532, 9.33935, 3.19115)

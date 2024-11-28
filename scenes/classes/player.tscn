@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ll11ns2il6mj"]
+[gd_scene load_steps=8 format=3 uid="uid://ll11ns2il6mj"]
 
 [ext_resource type="Script" path="res://scripts/classes/player.gd" id="1_iu2tr"]
 [ext_resource type="PackedScene" uid="uid://nnfgxwyk5tia" path="res://scenes/util/HealthComponent.tscn" id="2_qbuwg"]
@@ -10,6 +10,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_fm4c2"]
 resource_local_to_scene = true
 size = Vector3(1, 2, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2eeav"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_iu2tr")
@@ -41,3 +52,6 @@ healthComponent = NodePath("../HealthComponent")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185928, 0.95268, 0.00622559)
 shape = SubResource("BoxShape3D_fm4c2")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_2eeav")
