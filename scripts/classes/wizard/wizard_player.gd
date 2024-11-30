@@ -4,17 +4,18 @@ class_name WizardPlayer
 @export var spells : Array[WizardSpell] = []
 @export var spell_circle : MeshInstance3D
 
-@onready var current_spell : WizardSpell = spells[0]
+@onready var current_spell : int
 
 var consuming_mouse_movement : bool = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	
+	if !is_multiplayer_authority():
+		return
 	
 	if event is InputEventMouseButton:
 		if (event.button_index == MOUSE_BUTTON_LEFT
 		and event.is_pressed()):
-			current_spell.use(self)
+			cast_spell.rpc(current_spell, get_path())
 	
 	if event is InputEventKey:
 		if event.keycode == KEY_R:
@@ -27,11 +28,15 @@ func _unhandled_input(event: InputEvent) -> void:
 					circle_rotation = circle_rotation + 360
 				var selected_spell : int = (round(circle_rotation / 60) as int) % 6
 				spell_circle.rotation_degrees.z = selected_spell * 60
-				current_spell = spells[selected_spell]
-				
+				current_spell = selected_spell
+	
 	if not (event is InputEventMouseMotion
 	and consuming_mouse_movement):
 		super(event)
-	else:
+	elif is_multiplayer_authority():
 		event = event as InputEventMouseMotion
 		spell_circle.rotate_z(-event.relative.x / 200.)
+
+@rpc("call_local", "authority")
+func cast_spell(spell_id : int, path : NodePath):
+	spells[spell_id].use(path)
