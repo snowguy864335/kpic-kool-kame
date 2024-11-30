@@ -58,13 +58,33 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 	var result = space_state.intersect_ray(query)
 	if(result):
 		var damage_query = PhysicsShapeQueryParameters3D.new();
-		var shape = SphereShape3D.new()
-		shape.radius = 0.01
+		var shape = CylinderShape3D.new()
+		var h = 0.2
+		var r = 0.02
+		shape.height = h
+		shape.radius = r
 		damage_query.shape = shape
 		damage_query.transform = damage_query.transform.translated(result["position"])
+		damage_query.transform.basis.y = result["normal"]
+		damage_query.transform.basis.z = damage_query.transform.basis.y.cross(Vector3.UP)
+		if damage_query.transform.basis.z == Vector3.ZERO:
+			damage_query.transform.basis.z = damage_query.transform.basis.y.cross(Vector3.LEFT)
+		damage_query.transform.basis.x = damage_query.transform.basis.y.cross(damage_query.transform.basis.z)
+		damage_query.transform = damage_query.transform.translated(-damage_query.transform.basis.y * h / 2.)
 		
 		damage_query.collide_with_areas = true
 		damage_query.collide_with_bodies = true
+		damage_query.exclude.append(collisionbox.shape.get_rid())
+		damage_query.exclude.append(hurtbox.shape.get_rid())
+		# Uncomment to preview the damage query shape
+		#var mesh_preview = MeshInstance3D.new()
+		#mesh_preview.global_transform = damage_query.transform
+		#var mesh = CylinderMesh.new()
+		#mesh.height = h
+		#mesh.top_radius = r
+		#mesh.bottom_radius = r
+		#mesh_preview.mesh = mesh
+		#get_parent().add_child(mesh_preview)
 		var damage_result = space_state.intersect_shape(damage_query)
 		for collision in damage_result:
 			if (collision["collider"] is HitboxComponent):
