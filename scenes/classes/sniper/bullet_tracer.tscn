@@ -1,9 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba8mgws2iqdfp"]
+[gd_scene load_steps=4 format=3 uid="uid://ba8mgws2iqdfp"]
 
 [ext_resource type="Script" path="res://scripts/classes/sniper/bullet_tracer.gd" id="1_lhft5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_qws3p"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u0vdy"]
+properties/0/path = NodePath(".:custom_aabb")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:ignore_occlusion_culling")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="bullet_tracer" type="MeshInstance3D"]
 mesh = SubResource("QuadMesh_qws3p")
 script = ExtResource("1_lhft5")
+
+[node name="Bullet Trail Synchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_u0vdy")

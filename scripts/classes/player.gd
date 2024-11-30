@@ -16,7 +16,12 @@ const RAY_LENGTH = 1000
 @export var air_movement_modifier : float = 0.4
 @export var fov := 75
 
+var multiplayer_owner : int
+
 func _unhandled_input(event):
+	if !is_multiplayer_authority():
+		return
+	
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			rotate_y( (-event.relative.x * 0.01) * mouse_sensitivity)
@@ -28,6 +33,10 @@ var dash_vector : Vector3
 var run_time_elapsed := 0.0
 var dash_velocity : Vector3 = Vector3(0, 0, 0)
 func _physics_process(delta):
+	if !is_multiplayer_authority():
+		return
+	
+	
 	camera.fov = fov
 	
 	var mouseCoord := get_viewport().get_mouse_position()

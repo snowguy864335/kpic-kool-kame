@@ -4,7 +4,14 @@ extends Control
 @export var main_scene : PackedScene
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/levels/main.tscn")
+	if $VBoxContainer/TextEdit.text == "":
+		MultiplayerPeerManager.create_client("127.0.0.1")
+	else:
+		MultiplayerPeerManager.create_client($VBoxContainer/TextEdit.text)
+
+
+func _on_host_button_pressed() -> void:
+	MultiplayerPeerManager.create_server()
 
 
 func _on_options_pressed() -> void:

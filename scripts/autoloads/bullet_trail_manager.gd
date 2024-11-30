@@ -4,6 +4,7 @@ extends Node
 @export var scene : PackedScene = preload("res://scenes/classes/sniper/bullet_tracer.tscn")
 @export var shader : ShaderMaterial = preload("res://assets/materials/bullet_trail.tres")
 
+@rpc("any_peer", "call_local")
 func create_bullet_trail(start: Vector3, end: Vector3, direction: Vector3, width: float, delay: float = 0) -> MeshInstance3D:
 	var mesh := scene.instantiate()
 	

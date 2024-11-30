@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwl57c6c7y0pt"]
+[gd_scene load_steps=10 format=3 uid="uid://dwl57c6c7y0pt"]
 
 [ext_resource type="Script" path="res://scripts/interface/main_menu.gd" id="1_7778t"]
 [ext_resource type="Texture2D" uid="uid://bqvoh4ocxnj2t" path="res://assets/textures/HATSUNEMIKU.jpg" id="2_nhwna"]
@@ -42,19 +42,6 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 expand_margin_left = 100.0
 
-[sub_resource type="GDScript" id="GDScript_ujjcy"]
-script/source = "extends Button
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass"
-
 [node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -90,6 +77,24 @@ offset_right = 440.0
 offset_bottom = -72.0
 grow_vertical = 0
 
+[node name="Host Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_avltm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hvv14")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_txdxx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cosjt")
+text = "Host"
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Address to join"
+
 [node name="Start Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -100,7 +105,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hvv14")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_txdxx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cosjt")
 text = "スタート"
-script = SubResource("GDScript_ujjcy")
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -133,6 +137,7 @@ offset_bottom = 632.0
 texture = ExtResource("3_dwyql")
 expand_mode = 3
 
+[connection signal="pressed" from="VBoxContainer/Host Button" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit Game" to="." method="_on_quit_game_pressed"]
