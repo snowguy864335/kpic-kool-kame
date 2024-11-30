@@ -68,7 +68,7 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 		var damage_result = space_state.intersect_shape(damage_query)
 		for collision in damage_result:
 			if (collision["collider"] is HitboxComponent):
-				collision["collider"].hit(10)
+				collision["collider"].hit.rpc(10)
 			
 		
 		direction = (end-origin).normalized()

@@ -8,6 +8,7 @@ signal onDeath()
 @export var maxHealth := 10
 @onready var health : int = maxHealth
 
+@rpc("any_peer", "call_local")
 func changeHealth(amount : int) -> void:
 	health += amount
 	onHealthChange.emit(amount)
@@ -16,6 +17,7 @@ func changeHealth(amount : int) -> void:
 		get_parent().queue_free()
 	
 
+@rpc("any_peer", "call_local")
 func setHealth(newValue : int, emitOnHealthChange : bool) -> void:
 	var changeAmount = newValue - health
 	health = newValue

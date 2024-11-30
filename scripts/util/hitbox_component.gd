@@ -6,6 +6,7 @@ signal onHit(amount : int)
 @export_category("Hitbox")
 @export var healthComponent : HealthComponent
 
+@rpc("any_peer", "call_local")
 func hit(damage : int, bypassOneShotProtection : bool = false) -> void:
 	onHit.emit(damage)
 	if (healthComponent):
