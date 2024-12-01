@@ -10,6 +10,7 @@ class_name WizardPlayer
 var consuming_mouse_movement : bool = false
 
 func _ready() -> void:
+	dash_multiplier = 0
 	spell_hint.text = "Current Spell: " + spells[current_spell].spell_name
 
 func _unhandled_input(event: InputEvent) -> void:
