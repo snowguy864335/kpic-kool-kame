@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://cw68nrdep31id"]
+[gd_scene load_steps=38 format=3 uid="uid://cw68nrdep31id"]
 
 [ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_t58hx"]
 [ext_resource type="ArrayMesh" uid="uid://b5ohjdu5a4o0t" path="res://assets/models/monkey.obj" id="2_cuhfu"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
 [ext_resource type="PackedScene" uid="uid://cyqp2jrqmh7qv" path="res://scenes/interface/UI.tscn" id="4_uqsrh"]
 [ext_resource type="Script" path="res://scripts/interface/ui.gd" id="5_ulgyx"]
+[ext_resource type="Script" path="res://scenes/levels/area_3d.gd" id="6_m1t00"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -85,6 +86,21 @@ size = Vector3(5, 5, 0.1)
 size = Vector3(5, 5, 0.1)
 
 [sub_resource type="PointMesh" id="PointMesh_uhv3y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hinnj"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glycn"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.174316, 0.620483, 0.796875, 0.815686)
+rim = 0.31
+rim_tint = 0.77
+grow_amount = -0.727
+
+[sub_resource type="BoxMesh" id="BoxMesh_5t8lb"]
+material = SubResource("StandardMaterial3D_glycn")
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_t58hx")
@@ -227,5 +243,19 @@ spawn_path = NodePath("..")
 
 [node name="PlayerSpawnpoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.28906, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96331, 0, -3.72603)
+script = ExtResource("6_m1t00")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289001, 0)
+shape = SubResource("BoxShape3D_hinnj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.431969, 0)
+mesh = SubResource("BoxMesh_5t8lb")
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 
 [editable path="UI"]

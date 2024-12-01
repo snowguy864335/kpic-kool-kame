@@ -31,7 +31,10 @@ func _unhandled_input(event):
 var prev_pos : Vector3
 var dash_vector : Vector3
 var run_time_elapsed := 0.0
+
 var dash_velocity : Vector3 = Vector3(0, 0, 0)
+var knockback_velocity : Vector3 = Vector3(0, 0, 0)
+var velocities : Array[Vector3] = []
 func _physics_process(delta):
 	if !is_multiplayer_authority():
 		return
@@ -70,13 +73,18 @@ func _physics_process(delta):
 	if is_on_floor():
 		velocity.x *= ground_friction_multiplier
 		velocity.z *= ground_friction_multiplier
+		knockback_velocity *= ground_friction_multiplier
 	else:
 		velocity.x *= air_resistance_multiplier
 		velocity.z *= air_resistance_multiplier
+		knockback_velocity *= air_resistance_multiplier
 	
-	velocity += dash_velocity
+	velocity += dash_velocity + knockback_velocity
 	
 	
 	prev_pos = position
-
 	move_and_slide()
+
+
+func apply_knockback(amount : Vector3):
+	knockback_velocity += amount
