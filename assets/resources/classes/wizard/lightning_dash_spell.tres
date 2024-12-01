@@ -4,3 +4,4 @@
 
 [resource]
 script = ExtResource("1_07o5w")
+spell_name = "Lightning Dash"

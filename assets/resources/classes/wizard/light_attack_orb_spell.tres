@@ -6,3 +6,4 @@
 [resource]
 script = ExtResource("1_wvi5v")
 orb_scene = ExtResource("1_m45l3")
+spell_name = "Fireball"

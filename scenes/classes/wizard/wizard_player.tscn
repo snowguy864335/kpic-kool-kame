@@ -33,10 +33,14 @@ properties/0/path = NodePath("SpellCircle:rotation")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="WizardPlayer" node_paths=PackedStringArray("spell_circle") instance=ExtResource("1_38fy6")]
+[sub_resource type="LabelSettings" id="LabelSettings_76puv"]
+font_size = 61
+
+[node name="WizardPlayer" node_paths=PackedStringArray("spell_circle", "spell_hint") instance=ExtResource("1_38fy6")]
 script = ExtResource("2_k1s4l")
 spells = Array[ExtResource("3_gw5us")]([ExtResource("4_stfjw"), ExtResource("5_i6wbr"), ExtResource("6_6jpxs"), ExtResource("5_i6wbr"), ExtResource("5_i6wbr"), ExtResource("5_i6wbr")])
 spell_circle = NodePath("SpellCircle")
+spell_hint = NodePath("WizardUI/AspectRatioContainer/MarginContainer/SpellHint")
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("CapsuleShape3D_qlr0s")
@@ -50,3 +54,25 @@ mesh = SubResource("QuadMesh_ja2dm")
 
 [node name="Wizard Synchronizer" type="MultiplayerSynchronizer" parent="." index="9"]
 replication_config = SubResource("SceneReplicationConfig_ljhxk")
+[node name="WizardUI" type="Node" parent="." index="8"]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="WizardUI" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WizardUI/AspectRatioContainer" index="0"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 90
+
+[node name="SpellHint" type="Label" parent="WizardUI/AspectRatioContainer/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 96
+text = "Current Spell:"
+label_settings = SubResource("LabelSettings_76puv")
+horizontal_alignment = 1
+vertical_alignment = 1
