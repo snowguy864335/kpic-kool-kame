@@ -1,5 +1,5 @@
 extends WizardSpell
-class_name LightAttackOrb
+class_name LightAttackOrbSpell
 
 @export var orb_scene : PackedScene
 
@@ -11,7 +11,7 @@ var cooldown_timer : Timer
 
 
 func use(player : NodePath) -> bool:
-	var playerNode = Engine.get_main_loop().current_scene.get_node(player)
+	var playerNode : WizardPlayer = Engine.get_main_loop().current_scene.get_node(player)
 	if not cooldown_timer:
 		cooldown_timer = Timer.new()
 		cooldown_timer.wait_time = cooldown
@@ -21,7 +21,8 @@ func use(player : NodePath) -> bool:
 	
 	
 	if cooldown_timer.time_left == 0:
-		var orb : Area3D  = orb_scene.instantiate()
+		var orb : Fireball  = orb_scene.instantiate()
+		orb.exclusion.append(playerNode)
 		orb.transform = playerNode.camera.global_transform
 		playerNode.get_tree().root.add_child(orb)
 		cooldown_timer.start()

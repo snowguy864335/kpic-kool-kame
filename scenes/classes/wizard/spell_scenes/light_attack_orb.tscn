@@ -22,3 +22,5 @@ shape = SubResource("SphereShape3D_37qms")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00755797, 0, 0)
 material_override = ExtResource("1_erx3n")
 mesh = SubResource("SphereMesh_la182")
+
+[connection signal="body_entered" from="." to="." method="_on_collide"]
