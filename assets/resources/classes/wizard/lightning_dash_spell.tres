@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_07o5w")
+max_dash_distance = 1
+mana_cost = 10
+cooldown = 2.0
 spell_name = "Lightning Dash"
