@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_38fy6"]
 [ext_resource type="Script" path="res://scripts/classes/wizard/wizard_player.gd" id="2_k1s4l"]
 [ext_resource type="Script" path="res://scripts/classes/wizard/spells/wizard_spell.gd" id="3_gw5us"]
-[ext_resource type="Resource" path="res://assets/resources/classes/wizard/wind_dash_spell.tres" id="4_stfjw"]
+[ext_resource type="Resource" uid="uid://k04clgk5m6k0" path="res://assets/resources/classes/wizard/wind_dash_spell.tres" id="4_stfjw"]
 [ext_resource type="Resource" uid="uid://cxwtl7tt56uwt" path="res://assets/resources/classes/wizard/light_attack_orb_spell.tres" id="5_i6wbr"]
-[ext_resource type="Resource" path="res://assets/resources/classes/wizard/lightning_dash_spell.tres" id="6_6jpxs"]
+[ext_resource type="Resource" uid="uid://d3axwo4hdx4yn" path="res://assets/resources/classes/wizard/lightning_dash_spell.tres" id="6_6jpxs"]
 [ext_resource type="Texture2D" uid="uid://cql3lri4blhsq" path="res://assets/textures/magic_circle.png" id="6_i0woa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlr0s"]
