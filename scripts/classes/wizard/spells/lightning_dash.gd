@@ -9,6 +9,10 @@ class_name LightningDash
 @export var cooldown : float = 2
 
 var cooldown_timer : Timer
+var charges_left : int = 3
+
+func restore_charges():
+	charges_left = 3
 
 func use(player : NodePath) -> bool:
 	var playerNode : Node3D = Engine.get_main_loop().current_scene.get_node(player)
@@ -20,8 +24,9 @@ func use(player : NodePath) -> bool:
 		cooldown_timer.one_shot = true
 		cooldown_timer.name = "LightningDashCooldownTimer"
 		playerNode.add_child(cooldown_timer)
+		cooldown_timer.timeout.connect(restore_charges)
 	
-	if cooldown_timer.time_left == 0:
+	if charges_left > 0:
 		var effect : LightningDashEffect = effect_scene.instantiate()
 		playerNode.get_parent().add_child(effect)
 		var space_state = playerNode.get_world_3d().direct_space_state
@@ -36,7 +41,11 @@ func use(player : NodePath) -> bool:
 		else:
 			playerNode.global_position = end + Vector3.DOWN
 		effect.play_out(playerNode.global_position)
-		cooldown_timer.start()
+		
+		charges_left -= 1
+		
+		if charges_left == 0:
+			cooldown_timer.start()
 		
 		return true
 	return false

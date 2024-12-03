@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://0c4n65l86to7"]
 
-[ext_resource type="Script" path="res://scenes/classes/wizard/spell_scenes/lightning_dash_effect.gd" id="1_d4iu3"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_scenes/lightning_dash_effect.gd" id="1_d4iu3"]
 
 [sub_resource type="Curve" id="Curve_hsbc1"]
 _data = [Vector2(0, 1), 0.0, -0.120851, 0, 0, Vector2(1, 0), -2.81557, 0.0, 0, 0]
@@ -31,8 +31,8 @@ angle_min = 1.07288e-05
 angle_max = 1.07288e-05
 angle_curve = SubResource("CurveTexture_ugdxq")
 spread = 180.0
-initial_velocity_min = 6.0
-initial_velocity_max = 8.0
+initial_velocity_min = 8.0
+initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
 attractor_interaction_enabled = false
 scale_min = 0.2
@@ -425,7 +425,7 @@ script = ExtResource("1_d4iu3")
 
 [node name="Out" type="GPUParticles3D" parent="."]
 emitting = false
-amount = 25
+amount = 35
 lifetime = 0.4
 one_shot = true
 explosiveness = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cb845pg5yqftl"]
+[gd_scene load_steps=15 format=3 uid="uid://cb845pg5yqftl"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_38fy6"]
 [ext_resource type="Script" path="res://scripts/classes/wizard/wizard_player.gd" id="2_k1s4l"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://cxwtl7tt56uwt" path="res://assets/resources/classes/wizard/light_attack_orb_spell.tres" id="5_i6wbr"]
 [ext_resource type="Resource" uid="uid://d3axwo4hdx4yn" path="res://assets/resources/classes/wizard/lightning_dash_spell.tres" id="6_6jpxs"]
 [ext_resource type="Texture2D" uid="uid://cql3lri4blhsq" path="res://assets/textures/magic_circle.png" id="6_i0woa"]
+[ext_resource type="Resource" uid="uid://bc7sps4td02w0" path="res://assets/resources/classes/wizard/ice_wall_spell.tres" id="7_xhqab"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlr0s"]
 resource_local_to_scene = true
@@ -38,7 +39,7 @@ properties/0/replication_mode = 1
 
 [node name="WizardPlayer" node_paths=PackedStringArray("spell_circle", "spell_hint") instance=ExtResource("1_38fy6")]
 script = ExtResource("2_k1s4l")
-spells = Array[ExtResource("3_gw5us")]([ExtResource("4_stfjw"), ExtResource("5_i6wbr"), ExtResource("6_6jpxs"), ExtResource("5_i6wbr"), ExtResource("5_i6wbr"), ExtResource("5_i6wbr")])
+spells = Array[ExtResource("3_gw5us")]([ExtResource("4_stfjw"), ExtResource("5_i6wbr"), ExtResource("6_6jpxs"), ExtResource("7_xhqab"), ExtResource("5_i6wbr"), ExtResource("5_i6wbr")])
 spell_circle = NodePath("SpellCircle")
 spell_hint = NodePath("WizardUI/AspectRatioContainer/MarginContainer/SpellHint")
 

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_07o5w")
 effect_scene = ExtResource("1_gaobq")
-max_dash_distance = 2
+max_dash_distance = 3
 mana_cost = 10
-cooldown = 1.0
+cooldown = 3.0
 spell_name = "Lightning Dash"
