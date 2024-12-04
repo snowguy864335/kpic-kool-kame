@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HealSpell" load_steps=3 format=3 uid="uid://bodr1mfbbpl0o"]
+
+[ext_resource type="Script" path="res://scripts/classes/wizard/spells/heal_spell.gd" id="1_26mkh"]
+[ext_resource type="PackedScene" uid="uid://bfu1m56mtevls" path="res://scenes/classes/wizard/spell_scenes/spell_hud.tscn" id="1_wl2j1"]
+
+[resource]
+script = ExtResource("1_26mkh")
+hud_scene = ExtResource("1_wl2j1")
+mana_cost = 10
+cooldown = 20.0
+spell_name = "Heal"

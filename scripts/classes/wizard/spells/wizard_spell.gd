@@ -6,3 +6,9 @@ class_name WizardSpell
 func use(player : NodePath) -> bool:
 	push_warning("Default spell used!")
 	return false
+
+func select(player : NodePath) -> void:
+	pass
+
+func deselect(player : NodePath) -> void:
+	pass

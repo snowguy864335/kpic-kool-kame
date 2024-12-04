@@ -89,3 +89,7 @@ func _physics_process(delta):
 
 func apply_knockback(amount : Vector3):
 	knockback_velocity += amount
+
+
+func heal(amount : float):
+	$HealthComponent.changeHealth(amount)

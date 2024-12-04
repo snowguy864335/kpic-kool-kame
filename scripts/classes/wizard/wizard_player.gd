@@ -5,7 +5,8 @@ class_name WizardPlayer
 @export var spell_circle : MeshInstance3D
 @export var spell_hint : Label
 
-@onready var current_spell : int
+@onready var current_spell : int = 0
+
 
 var consuming_mouse_movement : bool = false
 
@@ -13,6 +14,8 @@ func _ready() -> void:
 	dash_multiplier = 0
 	spell_hint.text = "Current Spell: " + spells[current_spell].spell_name
 
+
+@onready var spell : WizardSpell = spells[current_spell]
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_multiplayer_authority():
 		spell_hint.visible = false
@@ -34,6 +37,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				current_spell = (round(circle_rotation / 60) as int) % 6
 				spell_circle.rotation_degrees.z = current_spell * 60
 				spell_hint.text = "Current Spell: " + spells[current_spell].spell_name
+				if spells[current_spell] != spell:
+					spell.deselect(get_path())
+					spell = spells[current_spell]
+					spell.select(get_path())
 	
 	if not (event is InputEventMouseMotion
 	and consuming_mouse_movement):

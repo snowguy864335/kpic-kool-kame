@@ -1,6 +1,7 @@
 extends WizardSpell
 class_name LightAttackOrbSpell
 
+@export var hud_scene : PackedScene
 @export var orb_scene : PackedScene
 
 @export var mana_cost : int = 10
@@ -29,3 +30,26 @@ func use(player : NodePath) -> bool:
 		return true
 	else:
 		return false
+		
+
+var hud : SpellHud
+func select(player : NodePath) -> void:
+	var playerNode : WizardPlayer = Engine.get_main_loop().current_scene.get_node(player)
+	if not cooldown_timer:
+		cooldown_timer = Timer.new()
+		cooldown_timer.wait_time = cooldown
+		cooldown_timer.one_shot = true
+		cooldown_timer.name = "FireballCooldownTimer"
+		playerNode.add_child(cooldown_timer)
+	
+	if playerNode.is_multiplayer_authority():
+		hud = hud_scene.instantiate()
+		hud.track_cooldown(cooldown_timer)
+		playerNode.add_child(hud)
+
+
+func deselect(player : NodePath) -> void:
+	var playerNode : WizardPlayer = Engine.get_main_loop().current_scene.get_node(player)
+	if playerNode.is_multiplayer_authority():
+		if hud:
+			hud.visible = false
