@@ -1,8 +1,9 @@
 [gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://be8xasb1k53vg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3gq3j"]
-noise_type = 3
+noise_type = 5
 frequency = 0.0361
+fractal_type = 0
 fractal_octaves = 2
 fractal_lacunarity = 1.145
 fractal_gain = 0.78
@@ -10,4 +11,5 @@ domain_warp_frequency = -0.065
 
 [resource]
 width = 2048
+generate_mipmaps = false
 noise = SubResource("FastNoiseLite_3gq3j")

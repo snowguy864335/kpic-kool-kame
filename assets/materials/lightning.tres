@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dklxt6fwpcug7"]
+
+[ext_resource type="Shader" path="res://assets/shaders/lightning.gdshader" id="1_usld0"]
+[ext_resource type="Texture2D" uid="uid://fsjfipkywk3d" path="res://assets/textures/lightning.png" id="2_pu86y"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_usld0")
+shader_parameter/lightning_color = Color(0.542664, 0.503906, 1, 1)
+shader_parameter/lightning_texture = ExtResource("2_pu86y")
