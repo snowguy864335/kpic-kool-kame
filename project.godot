@@ -13,7 +13,7 @@ config_version=5
 config/name="kpic kool kame"
 run/main_scene="res://scenes/interface/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/textures/_A4EAB27C-0B71-47EC-AC4D-8FD67CFD205F_-removebg-preview (1).png"
 
 [autoload]
 

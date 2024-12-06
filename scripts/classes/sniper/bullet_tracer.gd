@@ -9,14 +9,14 @@ var speed : float = 0
 var start_time : float = 0
 var delay : float = 0
 
-func set_length(len : float) -> void:
+func set_length(new_len : float) -> void:
 	assert(mesh is QuadMesh)
 	var quad_mesh := mesh as QuadMesh
 	
 	assert(quad_mesh.material is ShaderMaterial)
 	var shader := quad_mesh.material as ShaderMaterial
 	
-	shader.set_shader_parameter("line_length", len)
+	shader.set_shader_parameter("line_length", new_len)
 	shader.set_shader_parameter("mask", bullet_trail_shader_mask_texture)
 	
 
@@ -40,27 +40,27 @@ func set_width(width : float) -> void:
 	
 	shader.set_shader_parameter("line_width", width)
 
-func set_delay(delay: float) -> void:
-	self.delay = delay
+func set_delay(new_delay: float) -> void:
+	self.delay = new_delay
 
-func set_mask_fade_speed(speed: float) -> void:
+func set_mask_fade_speed(new_speed: float) -> void:
 	assert(mesh is QuadMesh)
 	var quad_mesh := mesh as QuadMesh
 	
 	assert(quad_mesh.material is ShaderMaterial)
 	var shader := quad_mesh.material as ShaderMaterial
 	
-	shader.set_shader_parameter("mask_fade_speed", speed)
+	shader.set_shader_parameter("mask_fade_speed", new_speed)
 
-func set_animation_speed(speed: float) -> void:
-	self.speed = speed
+func set_animation_speed(new_speed: float) -> void:
+	self.speed = new_speed
 	assert(mesh is QuadMesh)
 	var quad_mesh := mesh as QuadMesh
 	
 	assert(quad_mesh.material is ShaderMaterial)
 	var shader := quad_mesh.material as ShaderMaterial
 	
-	shader.set_shader_parameter("speed", speed)
+	shader.set_shader_parameter("speed", new_speed)
 
 func _init() -> void:
 	start_time = Time.get_ticks_msec()
@@ -68,7 +68,7 @@ func _init() -> void:
 	mesh.material = bullet_trail_shader_material.duplicate(true)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	assert(mesh is QuadMesh)
 	var quad_mesh := mesh as QuadMesh
 	

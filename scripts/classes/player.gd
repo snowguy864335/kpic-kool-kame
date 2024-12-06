@@ -42,7 +42,6 @@ func _physics_process(delta):
 	
 	camera.fov = fov
 	
-	var mouseCoord := get_viewport().get_mouse_position()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

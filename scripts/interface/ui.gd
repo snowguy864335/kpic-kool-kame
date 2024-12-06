@@ -2,9 +2,9 @@ extends Control
 
 @onready var debug_box = %Debug
 
-func set_property(name : String, value : String):
-	var label := debug_box.find_child(name) as RichTextLabel
-	label.text = name + ": " + value
+func set_property(property_name : String, value : String):
+	var label := debug_box.find_child(property_name) as RichTextLabel
+	label.text = property_name + ": " + value
 
 func hide_debug():
 	$ColorRect.hide()

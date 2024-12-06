@@ -31,12 +31,12 @@ func _unhandled_input(event):
 		if(timer.is_stopped() and ammo > 0 and reloadtimer.is_stopped()):
 			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 				penetration_depth = 0.2
-				cast_ray(false, Vector3(0,0,0),Vector3(0,0,0), exclusion_list)
+				cast_ray(false, Vector3(0,0,0),Vector3(0,0,0))
 				ammo_counter()
 
 
 func cast_ray(is_bounce: bool, bounce_origin : Vector3, 
-ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) -> void:
+ricoshot_direction : Vector3, start_length : float = 0) -> void:
 	var origin : Vector3 = Vector3(0,0,0)
 	var end : Vector3 = Vector3(0,0,0)
 	var direction : Vector3 = Vector3(0,0,0)
@@ -103,7 +103,7 @@ ricoshot_direction : Vector3, exclusion_list : Array, start_length : float = 0) 
 		if(does_it_bounce(direction, normal) and bounce_count <= 3):
 			
 			var bounce = direction.bounce(normal)
-			cast_ray(true,result["position"],bounce, exclusion_list, start_length + (result["position"] - origin).length() * 100)
+			cast_ray(true,result["position"],bounce, start_length + (result["position"] - origin).length() * 100)
 		else:
 			does_it_penetrate(result["position"],direction,result["collider"])
 	
@@ -158,7 +158,7 @@ func does_it_penetrate(origin : Vector3,direction : Vector3, object : Object) ->
 			query.position = origin + direction * (penetration_depth / i)
 			penetration_check_info = penetration_space_state.intersect_point(query,1)
 			if(penetration_check_info.is_empty()):
-				cast_ray(true,origin + direction * 0.01,direction, exclusion_list)
+				cast_ray(true,origin + direction * 0.01,direction)
 				penetration_depth = penetration_depth - penetration_depth / i
 				break
 			i = i -1
