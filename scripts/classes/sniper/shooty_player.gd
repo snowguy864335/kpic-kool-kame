@@ -64,21 +64,12 @@ func _unhandled_input(event):
 		grenade_but_cool.transform = $Camera3D.global_transform
 		grenade_but_cool.position = $grenade_spawn.global_position
 		grenade_but_cool.rotation.x = camera.rotation.x + MATH_CONSTANT_PI/2
-		grenade_but_cool.linear_velocity.y = 50 * sin(camera.global_rotation.x)
-		grenade_but_cool.linear_velocity.x = 50 * -sin(global_rotation.y)
-		grenade_but_cool.linear_velocity.z = 50 * -sin(global_rotation.y + MATH_CONSTANT_PI/2)
+		grenade_but_cool.linear_velocity.y = 50 * sin(camera.global_rotation.x) + velocity.x * 1.1
+		grenade_but_cool.linear_velocity.x = 50 * -sin(global_rotation.y) + velocity.y * 1.1
+		grenade_but_cool.linear_velocity.z = 50 * -sin(global_rotation.y + MATH_CONSTANT_PI/2) + velocity.z * 1.1
 		add_sibling(grenade_but_cool)
 		grenade_but_cool.make_live()
-		await get_tree().create_timer(3.1).timeout
-		explosion_but_better.position = grenade_but_cool.global_position
-		add_sibling(explosion_but_better)
-		explosion_but_better.get_node("Sparks").emitting = true
-		explosion_but_better.get_node("Flash").emitting = true
-		explosion_but_better.get_node("Fire").emitting = true
-		explosion_but_better.get_node("Smoke").emitting = true
-		grenade_but_cool.make_die()
-		grenade_but_cool.queue_free()
-		await get_tree().create_timer(0.9).timeout
+		await get_tree().create_timer(4).timeout
 		explosion_but_better.queue_free()
 	if(Input.is_action_just_released("skill_one") and !skill_one_timer.is_stopped()):
 		emit_signal("explode")
