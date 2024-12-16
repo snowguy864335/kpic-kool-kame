@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://by5l5k81ar4tl"]
+
+[ext_resource type="Script" path="res://scripts/classes/sniper/grenade_air_res.gd" id="2_t60gu"]
+[ext_resource type="PackedScene" uid="uid://ddixrunxlggex" path="res://scenes/util/explosion.tscn" id="2_vgjhn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pnb8d"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_toqqq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6supe"]
+
+[node name="sniper_grenade" type="RigidBody3D"]
+script = ExtResource("2_t60gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pnb8d")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_toqqq")
+
+[node name="explosion_area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="explosion_area"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("SphereShape3D_6supe")
+
+[node name="time_boom" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Explosion" parent="." instance=ExtResource("2_vgjhn")]
+visible = false

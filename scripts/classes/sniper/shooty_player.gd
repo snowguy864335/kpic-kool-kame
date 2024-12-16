@@ -1,23 +1,46 @@
 extends Player
 const MATH_CONSTANT_PI = 3.141593
+
+signal explode
+
 @onready var timer = $Timer
 @onready var reloadtimer = $Timer2
 @onready var ammoCounter = $UI/RichTextLabel
 @onready var epic_noise = $AudioStreamPlayer3D
 @onready var weapon = $Player_weapon
-
+@onready var skill_one_timer = $skill_one_timer
+@onready var skill_two_timer = $skill_two_timer
+@onready var skill_two_momentum = $skill_two_momentum
 var ammo : int = 5
+var grenade = preload("res://scenes/classes/sniper/sniper_grenade.tscn")
+var explosion = preload("res://scenes/util/explosion.tscn")
 var bounce_count : int = 0
-var penetration_depth := 0.2
+var penetration_depth : float = 0.2
 var exclusion_list : Array = []
+var skill_two_dash_velocity : Vector3
+var skill_two_dash_vector : Vector3
 
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	if (Input.is_action_pressed("skill_two") and skill_two_timer.is_stopped()):
+		skill_two_timer.start()
+		velocity.y = 100 * sin(camera.global_rotation.x)
+		velocity.x = 100 * -sin(global_rotation.y)
+		velocity.z = 100 * -sin(global_rotation.y + MATH_CONSTANT_PI/2)
+		skill_two_momentum.start()
+	if  (!is_on_floor() and !skill_two_momentum.is_stopped()):
+		air_resistance_multiplier = 1
+	else:
+		air_resistance_multiplier = 0.94
+	
 func _unhandled_input(event):
 	exclusion_list = []
 	super(event)
 	if !is_multiplayer_authority():
 		return
-	#if event is InputEventMouseMotion: Weapon rotation with camera rotation to be implemented later
-		#weapon.rotate_x( (-event.relative.y * 0.01) * mouse_sensitivity)
+	#if event is InputEventMouseMotion: to be implemented later
+		#weapon.rotation.z = -camera.global_rotation.x
 	if(Input.is_action_pressed("reload") and reloadtimer.is_stopped() and timer.is_stopped()):
 		ammo = 0
 		reloadtimer.start(5)
@@ -33,6 +56,23 @@ func _unhandled_input(event):
 				penetration_depth = 0.2
 				cast_ray(false, Vector3(0,0,0),Vector3(0,0,0))
 				ammo_counter()
+	if(Input.is_action_just_released("skill_one") and skill_one_timer.is_stopped()):
+		var grenade_but_cool : Grenade = grenade.instantiate()
+		var explosion_but_better = explosion.instantiate()
+		skill_one_timer.start()
+		explode.connect(grenade_but_cool.explode)
+		grenade_but_cool.transform = $Camera3D.global_transform
+		grenade_but_cool.position = $grenade_spawn.global_position
+		grenade_but_cool.rotation.x = camera.rotation.x + MATH_CONSTANT_PI/2
+		grenade_but_cool.linear_velocity.y = 50 * sin(camera.global_rotation.x) + velocity.x
+		grenade_but_cool.linear_velocity.x = 50 * -sin(global_rotation.y) + velocity.y
+		grenade_but_cool.linear_velocity.z = 50 * -sin(global_rotation.y + MATH_CONSTANT_PI/2) + velocity.z
+		add_sibling(grenade_but_cool)
+		grenade_but_cool.make_live()
+		await get_tree().create_timer(4).timeout
+		explosion_but_better.queue_free()
+	if(Input.is_action_just_released("skill_one") and !skill_one_timer.is_stopped()):
+		emit_signal("explode")
 
 
 func cast_ray(is_bounce: bool, bounce_origin : Vector3, 

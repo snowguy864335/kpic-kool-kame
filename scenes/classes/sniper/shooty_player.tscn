@@ -83,3 +83,18 @@ shape = SubResource("BoxShape3D_oouwt")
 
 [node name="ShootyPlayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="14"]
 replication_config = SubResource("SceneReplicationConfig_0vjxu")
+
+[node name="skill_one_timer" type="Timer" parent="." index="15"]
+wait_time = 5.0
+one_shot = true
+
+[node name="skill_two_timer" type="Timer" parent="." index="16"]
+wait_time = 15.0
+one_shot = true
+
+[node name="skill_two_momentum" type="Timer" parent="." index="17"]
+wait_time = 0.8
+one_shot = true
+
+[node name="grenade_spawn" type="Node3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.604157, 1.32469, -2.17017)
