@@ -5,7 +5,6 @@
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
 [ext_resource type="PackedScene" uid="uid://cyqp2jrqmh7qv" path="res://scenes/interface/UI.tscn" id="4_uqsrh"]
 [ext_resource type="Script" path="res://scripts/interface/ui.gd" id="5_ulgyx"]
-[ext_resource type="Script" path="res://scenes/levels/area_3d.gd" id="6_m1t00"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm30v"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -86,6 +85,14 @@ size = Vector3(5, 5, 0.1)
 size = Vector3(5, 5, 0.1)
 
 [sub_resource type="PointMesh" id="PointMesh_uhv3y"]
+
+[sub_resource type="GDScript" id="GDScript_hjjwx"]
+script/source = "extends Area3D
+	
+func _process(delta: float) -> void:
+	pass
+					#change the knockback to not be just bounce pad
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hinnj"]
 size = Vector3(1, 0.5, 1)
@@ -246,7 +253,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.28906, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96331, 0, -3.72603)
-script = ExtResource("6_m1t00")
+script = SubResource("GDScript_hjjwx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289001, 0)

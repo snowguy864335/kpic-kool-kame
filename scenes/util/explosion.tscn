@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://ddixrunxlggex"]
 
 [ext_resource type="Texture2D" uid="uid://dg1yxsw357sw2" path="res://assets/textures/Flare00.PNG" id="1_fq7fy"]
-[ext_resource type="Material" path="res://assets/materials/flash_material.tres" id="2_yw4xw"]
+[ext_resource type="Material" uid="uid://o15ysvjyhlae" path="res://assets/materials/flash_material.tres" id="2_yw4xw"]
 
 [sub_resource type="Curve" id="Curve_73owt"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
