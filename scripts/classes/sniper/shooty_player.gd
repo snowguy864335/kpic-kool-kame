@@ -64,9 +64,9 @@ func _unhandled_input(event):
 		grenade_but_cool.transform = $Camera3D.global_transform
 		grenade_but_cool.position = $grenade_spawn.global_position
 		grenade_but_cool.rotation.x = camera.rotation.x + MATH_CONSTANT_PI/2
-		grenade_but_cool.linear_velocity.y = 50 * sin(camera.global_rotation.x) + velocity.x * 1.1
-		grenade_but_cool.linear_velocity.x = 50 * -sin(global_rotation.y) + velocity.y * 1.1
-		grenade_but_cool.linear_velocity.z = 50 * -sin(global_rotation.y + MATH_CONSTANT_PI/2) + velocity.z * 1.1
+		grenade_but_cool.linear_velocity.y = 50 * sin(camera.global_rotation.x) + velocity.x
+		grenade_but_cool.linear_velocity.x = 50 * -sin(global_rotation.y) + velocity.y
+		grenade_but_cool.linear_velocity.z = 50 * -sin(global_rotation.y + MATH_CONSTANT_PI/2) + velocity.z
 		add_sibling(grenade_but_cool)
 		grenade_but_cool.make_live()
 		await get_tree().create_timer(4).timeout

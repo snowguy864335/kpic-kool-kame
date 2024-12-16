@@ -98,7 +98,3 @@ one_shot = true
 
 [node name="grenade_spawn" type="Node3D" parent="." index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.604157, 1.32469, -2.17017)
-
-[node name="skill_one_lifetime" type="Timer" parent="." index="19"]
-wait_time = 3.0
-one_shot = true
