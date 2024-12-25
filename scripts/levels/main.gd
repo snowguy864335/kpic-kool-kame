@@ -8,13 +8,11 @@ const player_types = {
 func _ready() -> void:
 	MultiplayerPeerManager.added_player.connect(register_player)
 	var player = MultiplayerPeerManager.personal_player_info
-	print("self: " + str(player))
 	_add_player(multiplayer.get_unique_id(), player["name"], player["type"])
 
 func register_player(id : int) -> void:
 	var peers = MultiplayerPeerManager.other_player_info
 	var new_player = peers[id]
-	print(new_player)
 	_add_player(id, new_player["name"], new_player["type"])
 	
 

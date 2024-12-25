@@ -41,13 +41,11 @@ func create_client(address : String):
 	
 
 func _on_join(id):
-	print("Player joining")
 	_receive_player.rpc_id(id, multiplayer.get_unique_id(), personal_player_info)
 
 
 @rpc("any_peer", "call_local")
 func _receive_player(id, info : Dictionary):
-	print("Receiving player")
 	assert(info.has("name") and info.has("type"))
 	other_player_info[id] = {"name": info["name"], "type": info["type"]}
 	added_player.emit(id)

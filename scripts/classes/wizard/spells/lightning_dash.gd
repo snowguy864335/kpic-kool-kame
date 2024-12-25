@@ -14,7 +14,9 @@ var charges_left : int = 3
 
 func restore_charges():
 	charges_left = 3
-	hud.set_charges(charges_left)
+	
+	if hud:
+		hud.set_charges(charges_left)
 
 func use(player : NodePath) -> bool:
 	var playerNode : Node3D = Engine.get_main_loop().current_scene.get_node(player)
@@ -45,7 +47,9 @@ func use(player : NodePath) -> bool:
 		effect.play_out(playerNode.global_position)
 		
 		charges_left -= 1
-		hud.set_charges(charges_left)
+		if hud:
+			hud.set_charges(charges_left)
+		
 		if charges_left == 0:
 			cooldown_timer.start()
 		
