@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cb845pg5yqftl"]
+[gd_scene load_steps=19 format=3 uid="uid://cb845pg5yqftl"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_38fy6"]
 [ext_resource type="Script" path="res://scripts/classes/wizard/wizard_player.gd" id="2_k1s4l"]
@@ -10,6 +10,8 @@
 [ext_resource type="Resource" uid="uid://bc7sps4td02w0" path="res://assets/resources/classes/wizard/ice_wall_spell.tres" id="7_xhqab"]
 [ext_resource type="Resource" uid="uid://b3hw1gyjfp7t5" path="res://assets/resources/classes/wizard/lightning_attack_spell.tres" id="8_0k5fv"]
 [ext_resource type="Resource" uid="uid://bodr1mfbbpl0o" path="res://assets/resources/classes/wizard/heal_spell.tres" id="9_yf3in"]
+[ext_resource type="Shader" path="res://assets/shaders/spell_circle.gdshader" id="10_yyq1w"]
+[ext_resource type="Script" path="res://scenes/classes/wizard/spell_circle.gd" id="12_ad3vw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlr0s"]
 resource_local_to_scene = true
@@ -20,16 +22,17 @@ height = 1.98206
 resource_local_to_scene = true
 size = Vector3(1, 2, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pe0n"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-specular_mode = 2
-albedo_color = Color(2, 0, 0, 1)
-albedo_texture = ExtResource("6_i0woa")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhtq"]
+render_priority = 0
+shader = ExtResource("10_yyq1w")
+shader_parameter/color = Color(2, 0, 0, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 0)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/texture_albedo = ExtResource("6_i0woa")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ja2dm"]
-material = SubResource("StandardMaterial3D_7pe0n")
 
 [sub_resource type="LabelSettings" id="LabelSettings_76puv"]
 font_size = 61
@@ -53,7 +56,9 @@ shape = SubResource("BoxShape3D_l6m3h")
 
 [node name="SpellCircle" type="MeshInstance3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8016, 0.901856, -1.00659)
+material_override = SubResource("ShaderMaterial_fjhtq")
 mesh = SubResource("QuadMesh_ja2dm")
+script = ExtResource("12_ad3vw")
 
 [node name="WizardUI" type="Node" parent="." index="8"]
 
