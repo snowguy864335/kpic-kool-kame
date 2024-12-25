@@ -70,6 +70,24 @@ offset_right = 440.0
 offset_bottom = -72.0
 grow_vertical = 0
 
+[node name="ClassSelect" type="OptionButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+selected = 0
+item_count = 3
+popup/item_0/text = "Select a class"
+popup/item_0/disabled = true
+popup/item_1/text = "Sniper"
+popup/item_1/id = 1
+popup/item_2/text = "Wizard"
+popup/item_2/id = 2
+
+[node name="Username" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Name"
+
 [node name="Host Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3

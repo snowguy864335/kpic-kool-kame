@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dklxt6fwpcug7"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://jm0kshi70c4f"]
 
 [ext_resource type="Shader" path="res://assets/shaders/lightning.gdshader" id="1_usld0"]
 [ext_resource type="Texture2D" uid="uid://fsjfipkywk3d" path="res://assets/textures/lightning.png" id="2_pu86y"]

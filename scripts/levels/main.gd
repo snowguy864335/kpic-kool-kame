@@ -1,8 +1,22 @@
 extends Node3D
 
+const player_types = {
+	"Sniper": preload("res://scenes/classes/sniper/shooty_player.tscn"),
+	"Wizard": preload("res://scenes/classes/wizard/wizard_player.tscn")
+}
+
 func _ready() -> void:
-	multiplayer.peer_connected.connect(_add_player)
-	_add_player(multiplayer.get_unique_id())
+	MultiplayerPeerManager.added_player.connect(register_player)
+	var player = MultiplayerPeerManager.personal_player_info
+	print("self: " + str(player))
+	_add_player(multiplayer.get_unique_id(), player["name"], player["type"])
+
+func register_player(id : int) -> void:
+	var peers = MultiplayerPeerManager.other_player_info
+	var new_player = peers[id]
+	print(new_player)
+	_add_player(id, new_player["name"], new_player["type"])
+	
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -11,13 +25,13 @@ func _input(event):
 	if event.is_action("escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-func _add_player(id : int):
+func _add_player(id : int, name : String, type : String):
 	print_rich(
 		"[NETWORK] [color=green]A peer numbered "
 		 + str(multiplayer.get_unique_id()) + " has connected to " + str(id) + "[/color]")
-	var player : Player = load("res://scenes/classes/wizard/wizard_player.tscn").instantiate()
+	var player : Player = player_types[type].instantiate()
 	player.position = $PlayerSpawnpoint.global_position
 	add_child(player)
 	player.set_multiplayer_authority(id)
-	player.name = str(id)
+	player.name = name
 	
