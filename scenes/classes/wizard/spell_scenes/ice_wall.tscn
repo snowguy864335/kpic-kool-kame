@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bc08atc1m33fn"]
 
-[ext_resource type="Material" uid="uid://dadurxda0dlom" path="res://assets/materials/ice_wall_material.tres" id="1_l2ax8"]
-[ext_resource type="Script" path="res://scenes/classes/wizard/spell_scenes/ice_wall.gd" id="1_nfdvw"]
+[ext_resource type="Material" uid="uid://cn0phic6ruwj3" path="res://assets/materials/ice_wall_material.tres" id="1_l2ax8"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_scenes/ice_wall.gd" id="1_nfdvw"]
 [ext_resource type="ArrayMesh" uid="uid://da8lch56h6ewe" path="res://assets/models/ice_wall.obj" id="2_rdidx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i650a"]

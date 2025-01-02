@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfu1m56mtevls"]
 
-[ext_resource type="Script" path="res://scenes/classes/wizard/spell_scenes/spell_hud.gd" id="1_8b05r"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_hud.gd" id="1_8b05r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxmtm"]
 bg_color = Color(0.6, 0.6, 0.6, 0.243)

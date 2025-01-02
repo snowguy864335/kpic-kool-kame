@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bc08atc1m33fn" path="res://scenes/classes/wizard/spell_scenes/ice_wall.tscn" id="2_p0jfd"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_mj57y")
 hud_scene = ExtResource("1_fx7qv")
 wall_scene = ExtResource("2_p0jfd")

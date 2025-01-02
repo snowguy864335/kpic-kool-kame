@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://b3hw1gyjfp7t5" path="res://assets/resources/classes/wizard/lightning_attack_spell.tres" id="8_0k5fv"]
 [ext_resource type="Resource" uid="uid://bodr1mfbbpl0o" path="res://assets/resources/classes/wizard/heal_spell.tres" id="9_yf3in"]
 [ext_resource type="Shader" path="res://assets/shaders/spell_circle.gdshader" id="10_yyq1w"]
-[ext_resource type="Script" path="res://scenes/classes/wizard/spell_circle.gd" id="12_ad3vw"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_circle.gd" id="12_ad3vw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlr0s"]
 resource_local_to_scene = true
@@ -60,9 +60,18 @@ material_override = SubResource("ShaderMaterial_fjhtq")
 mesh = SubResource("QuadMesh_ja2dm")
 script = ExtResource("12_ad3vw")
 
-[node name="WizardUI" type="Node" parent="." index="8"]
+[node name="WizardUI" type="Control" parent="." index="8"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="WizardUI" index="0"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="HealSpell" load_steps=3 format=3 uid="uid://bodr1mfbbpl0o"]
+[gd_resource type="Resource" script_class="HealSpell" load_steps=4 format=3 uid="uid://bodr1mfbbpl0o"]
 
 [ext_resource type="Script" path="res://scripts/classes/wizard/spells/heal_spell.gd" id="1_26mkh"]
+[ext_resource type="PackedScene" uid="uid://bimmvuq35oyi1" path="res://scenes/classes/wizard/spell_scenes/heal_effect.tscn" id="1_nxmwe"]
 [ext_resource type="PackedScene" uid="uid://bfu1m56mtevls" path="res://scenes/classes/wizard/spell_scenes/spell_hud.tscn" id="1_wl2j1"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_26mkh")
 hud_scene = ExtResource("1_wl2j1")
+effect_scene = ExtResource("1_nxmwe")
 mana_cost = 10
 cooldown = 20.0
 spell_name = "Heal"

@@ -2,6 +2,7 @@ extends WizardSpell
 class_name HealSpell
 
 @export var hud_scene : PackedScene
+@export var effect_scene : PackedScene
 
 @export var mana_cost : int = 10
 @export var cooldown : float = 20
@@ -18,8 +19,11 @@ func use(player : NodePath) -> bool:
 		playerNode.add_child(cooldown_timer)
 		
 	if cooldown_timer.time_left == 0:
+		var effect : HealEffect = effect_scene.instantiate()
+		playerNode.get_parent().add_child(effect)
 		playerNode.heal(10)
 		cooldown_timer.start()
+		effect.play(playerNode.global_position)
 		return true
 	return false
 	

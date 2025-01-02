@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bi7wwcmxq7s7p"]
 
-[ext_resource type="Material" uid="uid://dklxt6fwpcug7" path="res://assets/materials/lightning.tres" id="1_glcmp"]
-[ext_resource type="Script" path="res://scenes/classes/wizard/spell_scenes/lightning_attack.gd" id="1_tbunq"]
+[ext_resource type="Material" uid="uid://jm0kshi70c4f" path="res://assets/materials/lightning.tres" id="1_glcmp"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_scenes/lightning_attack.gd" id="1_tbunq"]
 [ext_resource type="ArrayMesh" uid="uid://c4lytbd83u00k" path="res://assets/models/lightning.obj" id="2_wuu8m"]
 
 [node name="LightningAttack" type="Node3D"]

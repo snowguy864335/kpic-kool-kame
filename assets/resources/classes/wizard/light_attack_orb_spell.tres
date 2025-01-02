@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/classes/wizard/spells/light_attack_orb.gd" id="1_wvi5v"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_wvi5v")
 hud_scene = ExtResource("1_uyx8f")
 orb_scene = ExtResource("1_m45l3")

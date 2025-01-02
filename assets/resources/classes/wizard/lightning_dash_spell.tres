@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bfu1m56mtevls" path="res://scenes/classes/wizard/spell_scenes/spell_hud.tscn" id="2_angcr"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_07o5w")
 hud_scene = ExtResource("2_angcr")
 effect_scene = ExtResource("1_gaobq")

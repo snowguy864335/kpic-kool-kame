@@ -17,7 +17,7 @@ void vertex() {
 
 void fragment() {
 	vec2 base_uv = UV;
-	
+
 	float mask = texture(texture_albedo, base_uv).a;
 	ALBEDO = color;
 	ALPHA = mask;

@@ -12,14 +12,32 @@ var consuming_mouse_movement : bool = false
 
 func _ready() -> void:
 	dash_multiplier = 0
-	spell_hint.text = "Current Spell: " + spells[current_spell].spell_name
+
+
+func _client_setup() -> void:
+	print("Waiting ready")
+	if !is_node_ready():
+		await ready
+	print("Running setup override")
+	if !is_multiplayer_authority():
+		print("Not authority")
+		$WizardUI.visible = false
+	else:
+		print("Authority")
+		$WizardUI.visible = true
+		var circle_rotation = spell_circle.rotation_degrees.z
+		if circle_rotation < 0:
+			circle_rotation = circle_rotation + 360
+		var selecting_spell : int = (round(circle_rotation / 60) as int) % 6
+		spell_hint.text = "Current Spell: " + spells[selecting_spell].spell_name
+		spells[selecting_spell].select(get_path())
 
 
 @onready var spell : WizardSpell = spells[current_spell]
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_multiplayer_authority():
-		spell_hint.visible = false
 		return
+	
 	if event is InputEventMouseButton:
 		if (event.button_index == MOUSE_BUTTON_LEFT
 		and event.is_pressed()):
@@ -52,8 +70,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		var circle_rotation = spell_circle.rotation_degrees.z
 		if circle_rotation < 0:
 			circle_rotation = circle_rotation + 360
-		var selecting_spell : int = (round(circle_rotation / 60) as int) % 6
-		spell_hint.text = "Current Spell: " + spells[selecting_spell].spell_name
+		current_spell = (round(circle_rotation / 60) as int) % 6
+		spell_hint.text = "Current Spell: " + spells[current_spell].spell_name
+		
+
 
 @rpc("call_local", "authority")
 func cast_spell(spell_id : int, path : NodePath):
