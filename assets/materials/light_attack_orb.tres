@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://blptt7yqsd8gj"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://degrf3jpe2ot2"]
 
 [ext_resource type="Shader" path="res://assets/shaders/light_attack_orb.gdshader" id="1_nggp5"]
 

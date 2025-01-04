@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bimmvuq35oyi1"]
 
-[ext_resource type="Script" path="res://scenes/classes/wizard/spell_scenes/heal_effect.gd" id="1_obm52"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_scenes/heal_effect.gd" id="1_obm52"]
 
 [sub_resource type="Curve" id="Curve_6wdgc"]
 max_value = 0.4

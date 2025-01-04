@@ -15,15 +15,11 @@ func _ready() -> void:
 
 
 func _client_setup() -> void:
-	print("Waiting ready")
 	if !is_node_ready():
 		await ready
-	print("Running setup override")
 	if !is_multiplayer_authority():
-		print("Not authority")
 		$WizardUI.visible = false
 	else:
-		print("Authority")
 		$WizardUI.visible = true
 		var circle_rotation = spell_circle.rotation_degrees.z
 		if circle_rotation < 0:

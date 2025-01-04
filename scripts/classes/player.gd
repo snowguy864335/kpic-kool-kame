@@ -22,15 +22,12 @@ var multiplayer_owner : int
 var setup : bool = false
 @rpc("call_local", "any_peer")
 func client_setup():
-	print("Running setup")
 	if !setup:
-		print("Proceeding with setup")
 		setup = true
 		_client_setup()
 
 
 func _client_setup():
-	print("Running default setup")
 	pass
 
 

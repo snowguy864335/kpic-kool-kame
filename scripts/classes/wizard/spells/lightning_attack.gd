@@ -23,7 +23,7 @@ func use(player : NodePath) -> bool:
 	if cooldown_timer.time_left == 0:
 		var attack : LightningAttackScene  = effect_scene.instantiate()
 		attack.transform = playerNode.camera.global_transform
-		#attack.global_basis.z = playerNode.camera.global_basis.z
+		attack.translate(Vector3.DOWN)
 		playerNode.get_tree().root.add_child(attack)
 		cooldown_timer.start()
 		return true
