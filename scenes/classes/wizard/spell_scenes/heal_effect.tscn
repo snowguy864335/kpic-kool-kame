@@ -1,0 +1,88 @@
+[gd_scene load_steps=15 format=3 uid="uid://bimmvuq35oyi1"]
+
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_scenes/heal_effect.gd" id="1_obm52"]
+
+[sub_resource type="Curve" id="Curve_6wdgc"]
+max_value = 0.4
+_data = [Vector2(0, 0), 0.0, 2.00515, 0, 0, Vector2(0.307443, 0.245278), 0.0, 0.0, 0, 0, Vector2(0.588997, 0.231824), 1.0834e-06, 1.0834e-06, 0, 0, Vector2(0.796117, 0.0972834), -1.19523, -1.19523, 0, 0, Vector2(1, 0), -0.223044, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_p6edj"]
+texture_mode = 1
+curve = SubResource("Curve_6wdgc")
+
+[sub_resource type="Gradient" id="Gradient_5mwfu"]
+colors = PackedColorArray(0.625, 1, 0.657227, 1, 0.300781, 1, 0.950836, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pch04"]
+gradient = SubResource("Gradient_5mwfu")
+
+[sub_resource type="Gradient" id="Gradient_elt4k"]
+colors = PackedColorArray(0.037384, 0.683594, 0, 1, 0.996094, 0.996094, 0.996094, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f4kh8"]
+gradient = SubResource("Gradient_elt4k")
+
+[sub_resource type="Curve" id="Curve_g7rm1"]
+_data = [Vector2(0, 0.537516), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8qq3w"]
+curve = SubResource("Curve_g7rm1")
+
+[sub_resource type="Curve" id="Curve_yaacx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.705502, 0.747736), -1.14632, -1.14632, 0, 0, Vector2(1, 0), -2.35605, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ydw3t"]
+curve = SubResource("Curve_yaacx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vjeyn"]
+particle_flag_rotate_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+orbit_velocity_min = 2.0
+orbit_velocity_max = 2.0
+radial_velocity_min = 0.199978
+radial_velocity_max = 0.199978
+gravity = Vector3(0, 0.2, 0)
+tangential_accel_min = 2.0
+tangential_accel_max = 2.0
+scale_min = 0.1
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_ydw3t")
+color_ramp = SubResource("GradientTexture1D_f4kh8")
+color_initial_ramp = SubResource("GradientTexture1D_pch04")
+alpha_curve = SubResource("CurveTexture_p6edj")
+emission_curve = SubResource("CurveTexture_8qq3w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5r7jo"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+point_size = 36.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_8kqpx"]
+material = SubResource("StandardMaterial3D_5r7jo")
+
+[node name="HealEffect" type="Node3D"]
+script = ExtResource("1_obm52")
+
+[node name="Effect" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 40
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_vjeyn")
+draw_pass_1 = SubResource("BoxMesh_8kqpx")

@@ -15,8 +15,21 @@ const RAY_LENGTH = 1000
 @export var air_resistance_multiplier : float = 0.94
 @export var air_movement_modifier : float = 0.4
 @export var fov := 75
+@export var dash_multiplier : float = 0
 
 var multiplayer_owner : int
+
+var setup : bool = false
+@rpc("call_local", "any_peer")
+func client_setup():
+	if !setup:
+		setup = true
+		_client_setup()
+
+
+func _client_setup():
+	pass
+
 
 func _unhandled_input(event):
 	if !is_multiplayer_authority():
@@ -53,7 +66,7 @@ func _physics_process(delta):
 		dash_cooldown.start()
 		dash_vector = -camera.global_basis.z
 		dash_momentum.start()
-	dash_velocity = (pow(4, -dash_momentum.time_left * 12) - 1) * 1.4 * -dash_vector
+	dash_velocity = (pow(4, -dash_momentum.time_left * 12) - 1) * dash_multiplier * -dash_vector
 	
 	var input_direction : Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var move_direction : Vector3 = (transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
@@ -87,3 +100,7 @@ func _physics_process(delta):
 
 func apply_knockback(amount : Vector3):
 	knockback_velocity += amount
+
+
+func heal(amount : float):
+	$HealthComponent.changeHealth(amount)

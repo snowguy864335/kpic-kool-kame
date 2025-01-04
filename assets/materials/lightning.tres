@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bunqk768gdk6r"]
+
+[ext_resource type="Shader" path="res://assets/shaders/lightning.gdshader" id="1_usld0"]
+[ext_resource type="Texture2D" uid="uid://fsjfipkywk3d" path="res://assets/textures/lightning.png" id="2_pu86y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x21ri"]
+noise_type = 2
+frequency = 0.0207
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2uuqm"]
+noise = SubResource("FastNoiseLite_x21ri")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_usld0")
+shader_parameter/lightning_color = Color(0.542664, 0.503906, 1, 1)
+shader_parameter/lightning_texture = ExtResource("2_pu86y")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2uuqm")

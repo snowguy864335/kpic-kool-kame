@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LightningDash" load_steps=4 format=3 uid="uid://d3axwo4hdx4yn"]
+
+[ext_resource type="Script" path="res://scripts/classes/wizard/spells/lightning_dash.gd" id="1_07o5w"]
+[ext_resource type="PackedScene" uid="uid://0c4n65l86to7" path="res://scenes/classes/wizard/spell_scenes/lightning_dash_effect.tscn" id="1_gaobq"]
+[ext_resource type="PackedScene" uid="uid://bfu1m56mtevls" path="res://scenes/classes/wizard/spell_scenes/spell_hud.tscn" id="2_angcr"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_07o5w")
+hud_scene = ExtResource("2_angcr")
+effect_scene = ExtResource("1_gaobq")
+max_dash_distance = 3
+mana_cost = 10
+cooldown = 3.0
+spell_name = "Lightning Dash"

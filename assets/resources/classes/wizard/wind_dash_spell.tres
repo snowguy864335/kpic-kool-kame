@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WindDash" load_steps=3 format=3 uid="uid://k04clgk5m6k0"]
+
+[ext_resource type="Script" path="res://scripts/classes/wizard/spells/wind_dash.gd" id="1_1fjde"]
+[ext_resource type="PackedScene" uid="uid://bfu1m56mtevls" path="res://scenes/classes/wizard/spell_scenes/spell_hud.tscn" id="1_cvoc2"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_1fjde")
+hud_scene = ExtResource("1_cvoc2")
+dash_velocity = 50.0
+mana_cost = 10
+cooldown = 4.0
+spell_name = "Wind Dash"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc08atc1m33fn"]
+
+[ext_resource type="Material" uid="uid://cn0phic6ruwj3" path="res://assets/materials/ice_wall_material.tres" id="1_l2ax8"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_scenes/ice_wall.gd" id="1_nfdvw"]
+[ext_resource type="ArrayMesh" uid="uid://da8lch56h6ewe" path="res://assets/models/ice_wall.obj" id="2_rdidx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i650a"]
+size = Vector3(14.9817, 15.4456, 1.25172)
+
+[node name="IceWall" type="Node3D"]
+script = ExtResource("1_nfdvw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+material_override = ExtResource("1_l2ax8")
+mesh = ExtResource("2_rdidx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.727281, 4.25378, -0.468727)
+shape = SubResource("BoxShape3D_i650a")

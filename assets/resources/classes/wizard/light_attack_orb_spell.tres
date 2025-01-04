@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LightAttackOrbSpell" load_steps=4 format=3 uid="uid://cxwtl7tt56uwt"]
+
+[ext_resource type="PackedScene" uid="uid://dyf010033mjbu" path="res://scenes/classes/wizard/spell_scenes/light_attack_orb.tscn" id="1_m45l3"]
+[ext_resource type="PackedScene" uid="uid://bfu1m56mtevls" path="res://scenes/classes/wizard/spell_scenes/spell_hud.tscn" id="1_uyx8f"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spells/light_attack_orb.gd" id="1_wvi5v"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_wvi5v")
+hud_scene = ExtResource("1_uyx8f")
+orb_scene = ExtResource("1_m45l3")
+mana_cost = 10
+cooldown = 0.5
+spell_name = "Fireball"

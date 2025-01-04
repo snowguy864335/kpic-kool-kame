@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyf010033mjbu"]
+
+[ext_resource type="Material" uid="uid://b6afx51lf10g3" path="res://assets/materials/light_attack_orb.tres" id="1_erx3n"]
+[ext_resource type="Script" path="res://scripts/classes/wizard/spell_scenes/light_attack_orb.gd" id="1_ybnae"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_37qms"]
+radius = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_la182"]
+radius = 0.15
+height = 0.3
+radial_segments = 128
+rings = 64
+
+[node name="LightAttackOrb" type="Area3D"]
+script = ExtResource("1_ybnae")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_37qms")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00755797, 0, 0)
+material_override = ExtResource("1_erx3n")
+mesh = SubResource("SphereMesh_la182")
+
+[connection signal="body_entered" from="." to="." method="_on_collide"]

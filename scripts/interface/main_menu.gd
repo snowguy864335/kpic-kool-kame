@@ -4,6 +4,9 @@ extends Control
 @export var main_scene : PackedScene
 
 func _on_start_button_pressed() -> void:
+	var username = $VBoxContainer/Username.text
+	var type = $VBoxContainer/ClassSelect.text
+	MultiplayerPeerManager.set_info(username, type)
 	if $VBoxContainer/TextEdit.text == "":
 		MultiplayerPeerManager.create_client("127.0.0.1")
 	else:
@@ -11,6 +14,9 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_host_button_pressed() -> void:
+	var username = $VBoxContainer/Username.text
+	var type = $VBoxContainer/ClassSelect.text
+	MultiplayerPeerManager.set_info(username, type)
 	MultiplayerPeerManager.create_server()
 
 
