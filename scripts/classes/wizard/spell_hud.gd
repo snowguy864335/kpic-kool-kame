@@ -20,7 +20,7 @@ func set_charges(charges : int):
 	charges_left = charges
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if use_charges:
 		charges_label.visible = true
 		charges_label.text = str(charges_left) + " charges left"

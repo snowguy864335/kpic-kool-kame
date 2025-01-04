@@ -26,5 +26,5 @@ func _explode():
 		self.is_live = false
 		self.visible = false
 
-func _integrate_forces(PhysicsDirectBodyState3D)-> void:
+func _integrate_forces(_state)-> void:
 	linear_velocity *= air_resistance_multiplier

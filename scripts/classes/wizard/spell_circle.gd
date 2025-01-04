@@ -5,7 +5,7 @@ extends MeshInstance3D
 func _ready():
 	material_override = material_override.duplicate(true)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var circle_rotation = rotation_degrees.z
 	if circle_rotation < 0:
 		circle_rotation = circle_rotation + 360

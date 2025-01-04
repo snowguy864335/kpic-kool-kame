@@ -3,12 +3,12 @@ class_name WizardSpell
 
 @export var spell_name : String = "Default"
 
-func use(player : NodePath) -> bool:
+func use(_player : NodePath) -> bool:
 	push_warning("Default spell used!")
 	return false
 
-func select(player : NodePath) -> void:
+func select(_player : NodePath) -> void:
 	pass
 
-func deselect(player : NodePath) -> void:
+func deselect(_player : NodePath) -> void:
 	pass

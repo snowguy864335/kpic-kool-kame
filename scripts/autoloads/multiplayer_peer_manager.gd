@@ -9,8 +9,8 @@ var other_player_info = {}
 
 signal added_player(id)
 
-func set_info(name : String, type : String) -> void:
-	personal_player_info["name"] = name
+func set_info(p_name : String, type : String) -> void:
+	personal_player_info["name"] = p_name
 	personal_player_info["type"] = type
 
 

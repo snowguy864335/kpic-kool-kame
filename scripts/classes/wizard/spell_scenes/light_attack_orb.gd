@@ -4,7 +4,7 @@ class_name Fireball
 var explosion_scene : PackedScene = preload("res://scenes/util/explosion.tscn")
 var exclusion : Array[Node3D] = []
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	global_position -= transform.basis.z * 1;
 	pass
 

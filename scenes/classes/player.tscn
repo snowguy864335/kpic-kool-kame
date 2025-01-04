@@ -1,15 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ll11ns2il6mj"]
+[gd_scene load_steps=7 format=3 uid="uid://ll11ns2il6mj"]
 
 [ext_resource type="Script" path="res://scripts/classes/player.gd" id="1_iu2tr"]
 [ext_resource type="PackedScene" uid="uid://nnfgxwyk5tia" path="res://scenes/util/HealthComponent.tscn" id="2_qbuwg"]
 [ext_resource type="Shape3D" uid="uid://dc6uxouulibdg" path="res://assets/resources/playerShape.tres" id="2_xq217"]
 [ext_resource type="PackedScene" uid="uid://cllxikl7s8po6" path="res://scenes/util/HitboxComponent.tscn" id="3_wms67"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_tyipt"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_fm4c2"]
 resource_local_to_scene = true
-size = Vector3(1, 2, 1)
+size = Vector3(0.561768, 2, 0.509888)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2eeav"]
 properties/0/path = NodePath(".:position")
@@ -29,12 +27,8 @@ script = ExtResource("1_iu2tr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = ExtResource("2_xq217")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_tyipt")
-
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49798, -0.0186882)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85248, -0.248369)
 
 [node name="DashCooldown" type="Timer" parent="."]
 wait_time = 2.0
@@ -50,7 +44,7 @@ one_shot = true
 healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185928, 0.95268, 0.00622559)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_fm4c2")
 
 [node name="Player Synchronizer" type="MultiplayerSynchronizer" parent="."]

@@ -9,7 +9,7 @@ func _ready() -> void:
 	queue_free()
 
 var frame_counter = 0
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	launch_bodies()
 	frame_counter += 1
 	if frame_counter == 2:

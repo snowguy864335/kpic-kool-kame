@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cb845pg5yqftl"]
+[gd_scene load_steps=20 format=3 uid="uid://cb845pg5yqftl"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_38fy6"]
 [ext_resource type="Script" path="res://scripts/classes/wizard/wizard_player.gd" id="2_k1s4l"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://bodr1mfbbpl0o" path="res://assets/resources/classes/wizard/heal_spell.tres" id="9_yf3in"]
 [ext_resource type="Shader" path="res://assets/shaders/spell_circle.gdshader" id="10_yyq1w"]
 [ext_resource type="Script" path="res://scripts/classes/wizard/spell_circle.gd" id="12_ad3vw"]
+[ext_resource type="PackedScene" uid="uid://bxw5hejid41xa" path="res://assets/models/Guy_Who_Swaps.blend" id="13_qr6pi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlr0s"]
 resource_local_to_scene = true
@@ -55,7 +56,7 @@ shape = SubResource("CapsuleShape3D_qlr0s")
 shape = SubResource("BoxShape3D_l6m3h")
 
 [node name="SpellCircle" type="MeshInstance3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8016, 0.901856, -1.00659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.230621, 1.36014, -0.752138)
 material_override = SubResource("ShaderMaterial_fjhtq")
 mesh = SubResource("QuadMesh_ja2dm")
 script = ExtResource("12_ad3vw")
@@ -92,5 +93,15 @@ label_settings = SubResource("LabelSettings_76puv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Wizard Synchronizer" type="MultiplayerSynchronizer" parent="." index="10"]
+[node name="Wizard Synchronizer" type="MultiplayerSynchronizer" parent="." index="9"]
 replication_config = SubResource("SceneReplicationConfig_ljhxk")
+
+[node name="Guy_Who_Swaps" parent="." index="10" instance=ExtResource("13_qr6pi")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Guy_Who_Swaps/Armature" index="0"]
+bones/8/rotation = Quaternion(0.854475, 0.508475, -0.050525, 0.097475)
+bones/9/rotation = Quaternion(0.00347497, -0.015525, -0.192525, 0.981475)
+bones/10/rotation = Quaternion(0.022475, 0.013475, -0.499525, 0.865475)
+
+[editable path="Guy_Who_Swaps"]

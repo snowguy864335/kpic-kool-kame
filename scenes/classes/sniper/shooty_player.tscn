@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://efmlyd2vxg8n"]
+[gd_scene load_steps=12 format=3 uid="uid://efmlyd2vxg8n"]
 
 [ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_noilx"]
 [ext_resource type="Script" path="res://scripts/classes/sniper/shooty_player.gd" id="2_070in"]
@@ -7,15 +7,16 @@
 [ext_resource type="Script" path="res://scripts/classes/sniper/ui.gd" id="4_fvpas"]
 [ext_resource type="AudioStream" uid="uid://e33bwkdawnky" path="res://assets/sounds/noise .mp3" id="5_8hxpb"]
 [ext_resource type="PackedScene" uid="uid://ba8mgws2iqdfp" path="res://scenes/classes/sniper/bullet_tracer.tscn" id="5_v0518"]
+[ext_resource type="PackedScene" uid="uid://csbplqhhyy0pa" path="res://assets/models/Snoipa_Gaming.blend" id="8_w8qtv"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sqwh2"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t70it"]
 resource_local_to_scene = true
-radius = 0.516974
+radius = 0.268111
 height = 1.98206
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oouwt"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bi4wy"]
 resource_local_to_scene = true
-size = Vector3(1, 2, 1)
+size = Vector3(0.561768, 2, 0.509888)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0vjxu"]
 properties/0/path = NodePath("Player_weapon:position")
@@ -26,10 +27,10 @@ properties/0/replication_mode = 1
 script = ExtResource("2_070in")
 
 [node name="CollisionShape3D" parent="." index="0"]
-shape = SubResource("CapsuleShape3D_sqwh2")
+shape = SubResource("CapsuleShape3D_t70it")
 
 [node name="Player_weapon" parent="." index="3" instance=ExtResource("2_ssolw")]
-transform = Transform3D(-5.24537e-10, 0, -0.012, 0, 0.012, 0, 0.012, 0, -5.24537e-10, -0.6, 1, -1.1)
+transform = Transform3D(-2.18557e-10, 0, -0.005, 0, 0.005, 0, 0.005, 0, -2.18557e-10, -0.184634, 1.4469, -0.998892)
 
 [node name="UI" type="Control" parent="." index="4"]
 layout_mode = 3
@@ -79,22 +80,34 @@ stream = ExtResource("5_8hxpb")
 volume_db = -15.0
 
 [node name="CollisionShape3D" parent="HitboxComponent" index="0"]
-shape = SubResource("BoxShape3D_oouwt")
+shape = SubResource("BoxShape3D_bi4wy")
 
-[node name="ShootyPlayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="14"]
+[node name="ShootyPlayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="13"]
 replication_config = SubResource("SceneReplicationConfig_0vjxu")
 
-[node name="skill_one_timer" type="Timer" parent="." index="15"]
+[node name="skill_one_timer" type="Timer" parent="." index="14"]
 wait_time = 5.0
 one_shot = true
 
-[node name="skill_two_timer" type="Timer" parent="." index="16"]
+[node name="skill_two_timer" type="Timer" parent="." index="15"]
 wait_time = 15.0
 one_shot = true
 
-[node name="skill_two_momentum" type="Timer" parent="." index="17"]
+[node name="skill_two_momentum" type="Timer" parent="." index="16"]
 wait_time = 0.8
 one_shot = true
 
-[node name="grenade_spawn" type="Node3D" parent="." index="18"]
+[node name="grenade_spawn" type="Node3D" parent="." index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.520515, 1.32469, -1.418)
+
+[node name="PlayerModel" parent="." index="18" instance=ExtResource("8_w8qtv")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="PlayerModel/Armature" index="0"]
+bones/5/rotation = Quaternion(-0.854525, -0.508525, -0.050525, 0.097475)
+bones/6/rotation = Quaternion(-0.037525, -0.000525026, -0.420525, 0.906475)
+bones/8/rotation = Quaternion(0.781475, 0.588475, 0.131475, -0.164525)
+bones/9/rotation = Quaternion(0.491475, -0.076525, 0.055475, 0.866475)
+bones/10/rotation = Quaternion(-0.111525, -0.00452503, 0.00147497, 0.993475)
+
+[editable path="PlayerModel"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cw68nrdep31id"]
+[gd_scene load_steps=33 format=3 uid="uid://cw68nrdep31id"]
 
 [ext_resource type="Script" path="res://scripts/interface/main.gd" id="1_t58hx"]
 [ext_resource type="Shader" path="res://assets/shaders/box.gdshader" id="3_aj2na"]
@@ -84,29 +84,6 @@ size = Vector3(5, 5, 0.1)
 size = Vector3(5, 5, 0.1)
 
 [sub_resource type="PointMesh" id="PointMesh_uhv3y"]
-
-[sub_resource type="GDScript" id="GDScript_hjjwx"]
-script/source = "extends Area3D
-	
-func _process(delta: float) -> void:
-	pass
-					#change the knockback to not be just bounce pad
-"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hinnj"]
-size = Vector3(1, 0.5, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glycn"]
-transparency = 1
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.174316, 0.620483, 0.796875, 0.815686)
-rim = 0.31
-rim_tint = 0.77
-grow_amount = -0.727
-
-[sub_resource type="BoxMesh" id="BoxMesh_5t8lb"]
-material = SubResource("StandardMaterial3D_glycn")
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_t58hx")
@@ -244,19 +221,5 @@ mesh = SubResource("PointMesh_uhv3y")
 
 [node name="PlayerSpawnpoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.28906, 0)
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96331, 0, -3.72603)
-script = SubResource("GDScript_hjjwx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289001, 0)
-shape = SubResource("BoxShape3D_hinnj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.431969, 0)
-mesh = SubResource("BoxMesh_5t8lb")
-
-[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 
 [editable path="UI"]

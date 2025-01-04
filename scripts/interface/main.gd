@@ -23,7 +23,7 @@ func _input(event):
 	if event.is_action("escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-func _add_player(id : int, name : String, type : String):
+func _add_player(id : int, p_name : String, type : String):
 	print_rich(
 		"[NETWORK] [color=green]A peer numbered "
 		 + str(multiplayer.get_unique_id()) + " has connected to " + str(id) + "[/color]")
@@ -32,5 +32,5 @@ func _add_player(id : int, name : String, type : String):
 	player.position = $PlayerSpawnpoint.global_position
 	add_child(player)
 	player.set_multiplayer_authority(id)
-	player.name = name
+	player.name = p_name
 	player.client_setup.rpc_id(id)
