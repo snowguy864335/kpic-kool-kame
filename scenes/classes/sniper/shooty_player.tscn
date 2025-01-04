@@ -97,4 +97,4 @@ wait_time = 0.8
 one_shot = true
 
 [node name="grenade_spawn" type="Node3D" parent="." index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.604157, 1.32469, -2.17017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.520515, 1.32469, -1.418)

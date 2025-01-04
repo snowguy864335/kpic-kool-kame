@@ -56,24 +56,26 @@ func _unhandled_input(event):
 				penetration_depth = 0.2
 				cast_ray(false, Vector3(0,0,0),Vector3(0,0,0))
 				ammo_counter()
-	if(Input.is_action_just_released("skill_one") and skill_one_timer.is_stopped()):
-		var grenade_but_cool : Grenade = grenade.instantiate()
-		var explosion_but_better = explosion.instantiate()
-		skill_one_timer.start()
-		explode.connect(grenade_but_cool.explode)
-		grenade_but_cool.transform = $Camera3D.global_transform
-		grenade_but_cool.position = $grenade_spawn.global_position
-		grenade_but_cool.rotation.x = camera.rotation.x + MATH_CONSTANT_PI/2
-		grenade_but_cool.linear_velocity.y = 50 * sin(camera.global_rotation.x) + velocity.x
-		grenade_but_cool.linear_velocity.x = 50 * -sin(global_rotation.y) + velocity.y
-		grenade_but_cool.linear_velocity.z = 50 * -sin(global_rotation.y + MATH_CONSTANT_PI/2) + velocity.z
-		add_sibling(grenade_but_cool)
-		grenade_but_cool.make_live()
-		await get_tree().create_timer(4).timeout
-		explosion_but_better.queue_free()
 	if(Input.is_action_just_released("skill_one") and !skill_one_timer.is_stopped()):
 		emit_signal("explode")
+	if(Input.is_action_just_released("skill_one") and skill_one_timer.is_stopped()):
+		spawn_grenade.rpc($Camera3D.global_transform, $grenade_spawn.global_position, Vector3(camera.global_rotation.x, global_rotation.y, 0), velocity)
+	
 
+
+@rpc("call_local", "any_peer")
+func spawn_grenade(g_transform : Transform3D, g_position : Vector3, g_rotation : Vector3, g_velocity : Vector3):
+	var grenade_but_cool : Grenade = grenade.instantiate()
+	skill_one_timer.start()
+	explode.connect(grenade_but_cool.explode)
+	grenade_but_cool.transform = g_transform
+	grenade_but_cool.position = g_position
+	grenade_but_cool.rotation.x = g_rotation.x + MATH_CONSTANT_PI/2
+	grenade_but_cool.linear_velocity.y = 50 * sin(g_rotation.x) + g_velocity.x
+	grenade_but_cool.linear_velocity.x = 50 * -sin(g_rotation.y) + g_velocity.y
+	grenade_but_cool.linear_velocity.z = 50 * -sin(g_rotation.y + MATH_CONSTANT_PI/2) + g_velocity.z
+	add_sibling(grenade_but_cool)
+	grenade_but_cool.make_live()
 
 func cast_ray(is_bounce: bool, bounce_origin : Vector3, 
 ricoshot_direction : Vector3, start_length : float = 0) -> void:

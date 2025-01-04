@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://by5l5k81ar4tl"]
+[gd_scene load_steps=6 format=3 uid="uid://c7w6lsotu83ti"]
 
 [ext_resource type="Script" path="res://scripts/classes/sniper/grenade_air_res.gd" id="2_t60gu"]
-[ext_resource type="PackedScene" uid="uid://ddixrunxlggex" path="res://scenes/util/explosion.tscn" id="2_vgjhn"]
+[ext_resource type="PackedScene" uid="uid://4uosknb5syxn" path="res://scenes/util/explosion.tscn" id="2_vgjhn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pnb8d"]
 
