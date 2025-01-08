@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://6el1bqwkdgm1"]
+
+[ext_resource type="Script" path="res://scripts/classes/rocket_launcher/rocket_he.gd" id="1_3jrej"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pjmgr"]
+size = Vector3(0.1, 0.1, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_arklo"]
+size = Vector3(0.1, 0.1, 0.75)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yccad"]
+radius = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bqctr"]
+size = Vector3(0.1, 0.1, 0.75)
+
+[node name="RocketHE" type="RigidBody3D"]
+script = ExtResource("1_3jrej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pjmgr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_arklo")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_yccad")
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="CollisionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_bqctr")
