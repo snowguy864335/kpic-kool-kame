@@ -17,20 +17,18 @@ var explosion = preload("res://scenes/util/explosion.tscn")
 var bounce_count : int = 0
 var penetration_depth : float = 0.2
 var exclusion_list : Array = []
-var skill_two_dash_velocity : Vector3
-var skill_two_dash_vector : Vector3
 
 
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if (Input.is_action_pressed("skill_two") and skill_two_timer.is_stopped()):
 		skill_two_timer.start()
-		velocity.y = 100 * sin(camera.global_rotation.x)
-		velocity.x = 100 * -sin(global_rotation.y)
-		velocity.z = 100 * -sin(global_rotation.y + MATH_CONSTANT_PI/2)
+		velocity.y = 85 * sin(camera.global_rotation.x)
+		velocity.x = 85 * -sin(global_rotation.y)
+		velocity.z = 85 * -sin(global_rotation.y + MATH_CONSTANT_PI/2)
 		skill_two_momentum.start()
 	if  (!is_on_floor() and !skill_two_momentum.is_stopped()):
-		air_resistance_multiplier = 1
+		air_resistance_multiplier = 0.99
 	else:
 		air_resistance_multiplier = 0.94
 	

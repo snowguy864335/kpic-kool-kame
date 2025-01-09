@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://o3wyltexcduf"]
+
+[ext_resource type="PackedScene" uid="uid://ll11ns2il6mj" path="res://scenes/classes/player.tscn" id="1_jmk4p"]
+[ext_resource type="Script" path="res://scripts/classes/rocket_launcher/rocket_launcher.gd" id="2_uwgih"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hmr41"]
+resource_local_to_scene = true
+radius = 0.516974
+height = 1.98206
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xaph8"]
+resource_local_to_scene = true
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sid0q"]
+size = Vector3(0.4, 0.4, 2.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0sir7"]
+height = 5.0
+
+[node name="rocket_launcher" instance=ExtResource("1_jmk4p")]
+script = ExtResource("2_uwgih")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_hmr41")
+
+[node name="CollisionShape3D" parent="HitboxComponent" index="0"]
+shape = SubResource("BoxShape3D_xaph8")
+
+[node name="ShotCd" type="Timer" parent="." index="8"]
+wait_time = 2.5
+one_shot = true
+autostart = true
+
+[node name="RechargeTimer" type="Timer" parent="." index="9"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="SkillOneCd" type="Timer" parent="." index="10"]
+wait_time = 10.0
+one_shot = true
+
+[node name="SkillOneMomentum" type="Timer" parent="." index="11"]
+one_shot = true
+
+[node name="SkillTwoCd" type="Timer" parent="." index="12"]
+wait_time = 5.0
+one_shot = true
+
+[node name="PlaceHolderLauncher" type="MeshInstance3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.5, 0)
+mesh = SubResource("BoxMesh_sid0q")
+
+[node name="RocketSpawn" type="Node3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.5, -1.5)
+
+[node name="SkillOneReflectArea" type="Area3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -2.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SkillOneReflectArea" index="0"]
+shape = SubResource("CylinderShape3D_0sir7")
+
+[node name="PlayerUI" type="Control" parent="." index="16"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Energy" type="RichTextLabel" parent="PlayerUI" index="0"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AmmoType" type="RichTextLabel" parent="PlayerUI" index="1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
