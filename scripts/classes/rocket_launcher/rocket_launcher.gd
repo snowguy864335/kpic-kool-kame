@@ -8,6 +8,7 @@ var skill_two_held : float = 0
 var rocket_HE = preload("res://scenes/classes/rocket launcher/rocket_he.tscn")
 var rocket_AP  = preload("res://scenes/classes/rocket launcher/rocket_he.tscn") #temp
 var rocket_HEAT  = preload("res://scenes/classes/rocket launcher/rocket_he.tscn") #temp
+var rocket_ALHVAS = preload("res://scenes/classes/rocket launcher/rocket_he.tscn") #temp, only activates of 1k damage dealt
 var ammo_array : Array = [rocket_HE,rocket_AP,rocket_HEAT] #used to not need 3 if statements
 var super_shot_sequence : Array = [3,1,2]
 var super_shot_temp : Array = [0,0,0]
@@ -67,6 +68,7 @@ func fire_rocket() -> void:
 	rocket_to_be_spawned =  $Camera3D.global_transform
 	rocket_to_be_spawned.position = $RocketSpawn.global_position
 	rocket_to_be_spawned.rotation.x = $Camera3D.global_rotation.x
+	super_speed.connect(rocket_to_be_spawned)
 	add_sibling(rocket_to_be_spawned)
 	await get_tree().create_timer(5).timeout
 	rocket_to_be_spawned.queue_free()

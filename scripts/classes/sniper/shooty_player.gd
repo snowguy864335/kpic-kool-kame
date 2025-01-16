@@ -23,9 +23,9 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	if (Input.is_action_pressed("skill_two") and skill_two_timer.is_stopped()):
 		skill_two_timer.start()
-		velocity.y = 85 * sin(camera.global_rotation.x)
-		velocity.x = 85 * -sin(global_rotation.y)
-		velocity.z = 85 * -sin(global_rotation.y + MATH_CONSTANT_PI/2)
+		velocity.y = 70 * sin(camera.global_rotation.x)
+		velocity.x = 70 * -sin(global_rotation.y)
+		velocity.z = 70 * -sin(global_rotation.y + MATH_CONSTANT_PI/2)
 		skill_two_momentum.start()
 	if  (!is_on_floor() and !skill_two_momentum.is_stopped()):
 		air_resistance_multiplier = 0.99

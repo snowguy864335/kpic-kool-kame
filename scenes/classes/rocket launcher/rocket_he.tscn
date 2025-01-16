@@ -23,9 +23,9 @@ mesh = SubResource("BoxMesh_pjmgr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_arklo")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="ExplosionArea" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea"]
 shape = SubResource("SphereShape3D_yccad")
 
 [node name="Lifespan" type="Timer" parent="."]
@@ -38,3 +38,5 @@ autostart = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 shape = SubResource("BoxShape3D_bqctr")
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

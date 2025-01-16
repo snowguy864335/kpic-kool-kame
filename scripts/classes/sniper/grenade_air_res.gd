@@ -34,7 +34,7 @@ func explode() -> void:
 						direction.y += 0.5
 					else:
 						direction.y -= 0.5
-					area.get_parent().apply_knockback(-direction * 1.5 / (area.global_transform.origin.distance_to($explosion_area.global_transform.origin)/5 + 0.1))
+					area.get_parent().apply_knockback(-direction * 1.5 / (area.global_transform.origin.distance_to($explosion_area.global_transform.origin)/8 + 0.1))
 		self.is_live = false
 		self.visible = false
 
